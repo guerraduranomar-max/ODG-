@@ -221,6 +221,109 @@ footer{border-top:1px solid var(--line);padding:24px 0 40px;display:flex;justify
 
 
 .lavadora-preview-note{font-size:.85rem;color:var(--muted);margin:12px 0 0;line-height:1.5}
+
+/* v11 — Sistema adaptativo de portada, navegación, galerías y multimedia. */
+html{scroll-padding-top:90px}
+img,svg,video{max-width:100%}
+.wrap{width:min(100%,1440px);max-width:1440px;padding-inline:clamp(20px,4.5vw,80px)}
+.mast .wrap{height:auto;min-height:68px;padding-block:11px;flex-wrap:wrap}
+.mast nav{max-width:100%;gap:clamp(11px,1.65vw,24px);min-width:0}
+.mast nav a{font-size:clamp(.59rem,.7vw,.75rem)}
+.brand{font-size:clamp(1rem,1.2vw,1.35rem)}
+.hero-cinema{
+  min-height:clamp(660px,83svh,980px);
+  padding:clamp(98px,10vw,144px) clamp(8px,1.8vw,28px) clamp(155px,13vw,205px);
+  align-items:center;
+}
+.cinema-content{width:min(100%,920px);max-width:920px;margin:0 auto 0 0;padding:0;min-width:0}
+.hero-cinema h1{
+ font-size:clamp(3.5rem,6vw,7.2rem);
+ max-width:12.5ch;
+ margin:clamp(16px,2vw,32px) 0 clamp(16px,2vw,28px);
+ line-height:1.04;
+ overflow-wrap:normal;
+}
+.cinema-desc{max-width:43ch;font-size:clamp(1.08rem,1.55vw,1.42rem);line-height:1.55}
+.cinema-actions{margin-top:clamp(22px,2.8vw,43px)}
+.cinema-index{display:none}
+.cinema-reel{right:clamp(18px,3vw,48px);left:auto;bottom:clamp(20px,2vw,36px);max-width:510px;width:min(48%,510px)}
+.cinema-mini{width:auto;flex:1;min-width:0}
+.cinema-mini strong{font-size:clamp(.9rem,1.15vw,1.17rem)}
+.cinema-mini img{width:58px;height:58px}
+.hero-cinema .cinema-scene-a img{object-position:62% 50%}
+.hero-cinema .cinema-scenes:after{
+ background:linear-gradient(90deg,rgba(5,9,16,.92) 0%,rgba(5,9,16,.76) 35%,rgba(5,9,16,.23) 76%,rgba(5,9,16,.08) 100%),linear-gradient(0deg,#0a0f16,transparent 45%);
+}
+.sh{grid-template-columns:minmax(115px,170px) minmax(0,1fr)}
+.book-intro{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}
+.book-cover img{height:auto;min-height:0;aspect-ratio:3/4;object-fit:cover}
+.book-gallery img{height:auto;aspect-ratio:4/5;object-fit:cover}
+.book-trailer{grid-template-columns:minmax(0,.55fr) minmax(0,1fr)}
+.book-trailer .frm{width:100%;max-width:none;aspect-ratio:16/9}
+.book-trailer .frm video{object-fit:contain}
+.il,.book-gallery{min-width:0}
+.vfrm{max-width:100%;aspect-ratio:16/9}
+.vfeat{width:min(100%,1000px);margin-inline:auto}
+.youtube-contact{color:var(--amber)!important}
+.youtube-nav{color:var(--amber)!important}
+.links a{display:inline-flex;align-items:center;min-height:32px}
+@media (min-width:1600px){
+ .hero-cinema{min-height:810px}
+ .hero-cinema h1{font-size:7.2rem}
+}
+@media (min-width:761px) and (max-width:1190px){
+ .mast .wrap{gap:10px}
+ .mast nav{gap:12px}
+ .hero-cinema{min-height:720px;padding-bottom:185px}
+ .hero-cinema h1{font-size:clamp(3.7rem,6.5vw,6.5rem)}
+ .cinema-reel{width:min(57%,470px)}
+ .book-copy h3{font-size:clamp(2.6rem,4.4vw,4rem)}
+}
+@media (max-width:760px){
+ html{scroll-padding-top:115px}
+ .mast .wrap{align-items:center;gap:8px;min-height:65px}
+ .mast .brand{flex:1 0 100%}
+ .mast nav{width:100%;overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px;gap:18px}
+ .mast nav a{font-size:.64rem}
+ #lang{flex:0 0 auto}
+ .hero-cinema{min-height:0;padding:clamp(80px,10vw,110px) 8px 165px;align-items:flex-start}
+ .hero-cinema h1{font-size:clamp(2.9rem,10vw,5rem);max-width:12ch}
+ .cinema-content{margin:0}
+ .cinema-desc{font-size:clamp(1.01rem,3vw,1.2rem);max-width:42ch}
+ .cinema-reel{left:8px;right:8px;bottom:17px;max-width:none;width:auto;gap:9px}
+ .cinema-mini{padding:7px;min-height:68px}
+ .cinema-mini img{width:46px;height:52px}
+ .cinema-mini strong{font-size:1.01rem}
+ .cinema-mini small{font-size:.46rem}
+ .sh{grid-template-columns:1fr}
+ .sh p{grid-column:1}
+ .book-intro,.book-trailer{grid-template-columns:1fr}
+ .book-cover{width:min(100%,490px);max-width:none;margin-inline:auto}
+ .book-cover img{height:auto;aspect-ratio:3/4}
+ .book-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .book-gallery img{height:auto;aspect-ratio:4/5}
+ .book-trailer .frm{max-width:560px;aspect-ratio:16/9}
+ .about p{margin-left:0}
+}
+@media(max-width:420px){
+ .wrap{padding-inline:16px}
+ .hero-cinema{padding-bottom:175px}
+ .hero-cinema h1{font-size:clamp(2.5rem,11.4vw,3.2rem)}
+ .cinema-eyebrow{letter-spacing:.07em;font-size:.55rem}
+ .cinema-actions{gap:14px}
+ .cinema-button{padding:12px 13px;gap:12px;font-size:.64rem}
+ .cinema-link{font-size:.65rem}
+ .cinema-mini span:last-child{display:none}
+ .cinema-mini img{width:40px;height:48px}
+ .cinema-mini strong{font-size:.9rem}
+ .book-gallery{gap:8px}
+ .book-gallery figcaption{font-size:.6rem}
+ .contact a.big{font-size:clamp(1.28rem,6vw,1.7rem)}
+}
+@media (prefers-reduced-motion:reduce){
+ .hero-cinema .cinema-scene-a img{animation:none!important;transform:none!important}
+}
+
 </style>
 </head>
 <body>
@@ -230,7 +333,7 @@ footer{border-top:1px solid var(--line);padding:24px 0 40px;display:flex;justify
 <header class="mast"><div class="wrap">
  <a class="brand" href="#top">Omar Durán Guerra</a>
  <nav>
-  <a href="#lit" data-t="nLit"></a><a href="#mus" data-t="nMus"></a><a href="#art" data-t="nArt"></a><a href="#ani" data-t="nAni"></a><a href="#sob" data-t="nSob"></a><a href="#con" data-t="nCon"></a>
+  <a href="#lit" data-t="nLit"></a><a href="#mus" data-t="nMus"></a><a href="#art" data-t="nArt"></a><a href="#ani" data-t="nAni"></a><a href="#sob" data-t="nSob"></a><a href="#con" data-t="nCon"></a><a class="youtube-nav" href="https://www.youtube.com/channel/UCvqPRjKaXM8nK6IsUoBd4Yw" target="_blank" rel="noopener noreferrer" aria-label="Canal de YouTube / YouTube channel">YouTube ↗</a>
   <button id="lang" aria-label="Cambiar idioma / Change language">EN</button>
  </nav>
 </div></header>
@@ -323,7 +426,7 @@ footer{border-top:1px solid var(--line);padding:24px 0 40px;display:flex;justify
  <section class="s rv contact" id="con">
   <div class="sh"><span class="mono"><b>VI</b><span data-t="ph6"></span></span><h2 data-t="tCon"></h2><p data-t="pCon"></p></div>
   <a class="big" href="mailto:hola@tudominio.com">hola@tudominio.com</a>
-  <div class="links"><a href="https://open.spotify.com/album/7llUuZTKw5CL1C98NneUfc" target="_blank" rel="noopener">Spotify</a><a href="https://a.co/d/04S1v1Fh" target="_blank" rel="noopener">Amazon</a><a href="https://www.instagram.com/guerrachino/" target="_blank" rel="noopener">Instagram · @guerrachino</a><a href="https://www.facebook.com/share/1FkwT41bkB/" target="_blank" rel="noopener">Facebook · Omar Duran Guerra</a></div>
+  <div class="links"><a class="youtube-contact" href="https://www.youtube.com/channel/UCvqPRjKaXM8nK6IsUoBd4Yw" target="_blank" rel="noopener noreferrer">YouTube · Canal oficial ↗</a><a href="https://open.spotify.com/album/7llUuZTKw5CL1C98NneUfc" target="_blank" rel="noopener">Spotify</a><a href="https://a.co/d/04S1v1Fh" target="_blank" rel="noopener">Amazon</a><a href="https://www.instagram.com/guerrachino/" target="_blank" rel="noopener">Instagram · @guerrachino</a><a href="https://www.facebook.com/share/1FkwT41bkB/" target="_blank" rel="noopener">Facebook · Omar Duran Guerra</a></div>
  </section>
 
  <footer><span class="mono">© 2026 Omar Durán Guerra</span><span class="mono" data-t="foot"></span></footer>
@@ -342,7 +445,7 @@ es:{bookCoverLabel:"PORTADA DEL LIBRO",bookEyebrow:"OBRA PUBLICADA / 15 RELATOS"
  tArt:"Ilustración",pArt:"Las imágenes del libro, por Boli Nolasco.",
  tAni:"Animación y código",pAni:"Breves momentos emblemáticos de los cuentos.",
  tCon:"Contacto",pCon:"Para colaborar, publicar o simplemente escribir.",
- foot:"Hecho a mano, con código",read:"Ver",listen:"Escuchar",view:"Ver pieza",med:"Técnica",genre:"Género"},
+ foot:"Escritura · música · animación",read:"Ver",listen:"Escuchar",view:"Ver pieza",med:"Técnica",genre:"Género"},
 en:{bookCoverLabel:"BOOK COVER",bookEyebrow:"PUBLISHED WORK / 15 STORIES",bookText1:"A collection of stories in which the everyday opens onto the strange, the intimate, the absurd and the unsettling. Through characters and situations that challenge our sense of reality, the book explores many forms of the unusual: what surprises, disorients or reveals a crack in ordinary experience.",bookText2:"Boli Nolasco’s illustrations expand this narrative world through a visual language that accompanies, interprets and extends the atmosphere of the stories.",bookAuthor:"Writing",bookIllustrations:"Illustrations",bookGalleryTitle:"An illustrated universe",bookGalleryMeta:"FOUR VISIONS OF THE STORIES",bookImage1:"Illustration 01",bookImage2:"Illustration 02",bookImage3:"Illustration 03",bookImage4:"Illustration 04",bookCreditFoot:"Original illustrations by Boli Nolasco for Quince cuentos inusuales.",bookMediaLabel:"THE BOOK IN IMAGES",bookMediaTitle:"An invitation into its stories",bookMediaDesc:"An audiovisual introduction to the book. The video will appear here once a public link or compatible file is available.",cinKicker:"OMAR DURÁN GUERRA / CREATIVE PORTFOLIO",cinTitle:"Words, sound <em>and image.</em>",cinDesc:"I write stories, create music and explore moving images. Different forms of expression shaping a creative world of my own.",cinExplore:"Explore animations",cinRead:"Discover my writing",cinFilm:"ANIMATED WORK",cinCaption:"FRAMES FROM ANIMATED WORKS",nLit:"Writing",nMus:"Music",nArt:"Illustration",nAni:"Motion",nCon:"Contact",ph1:"New moon",ph2:"Crescent",ph3:"First quarter",ph4:"Gibbous",ph5:"Full moon",ph6:"Dawn",nSob:"About",tSob:"About",aSob:"My work moves between fiction, music and moving images. I published Quince cuentos inusuales with Editorial Gato Blanco and write stories for the magazine Letras Insomnes. My music goes by the name Stroma. I hold a master’s degree in science from UAM-I and collaborate on musical ideas and video at Alter.lab.",
  kicker:"Portfolio · Night edition",h1:"Words, sound and images <em>for those who can’t sleep</em>.",lede:"Stories, music and moving pieces, arranged by the phases of the moon.",
  flowCap:"Photograph drawn with moving lines · code",vidCap:"Book trailer",lavCap:"Lavadora · animated story",lavPreviewNote:"13-second preview. Full film link coming soon.",cicCap:"Cícada · 8-second preview",credit:"Illustrations for Quince cuentos inusuales: Boli Nolasco ·",colCap:"Illustrations from Quince cuentos inusuales",
