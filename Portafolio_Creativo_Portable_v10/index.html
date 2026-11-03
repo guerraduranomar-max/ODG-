@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Omar Durán Guerra · Edición nocturna</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..500&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+:root{--bg:#0a0f16;--ink:#e9e6dc;--muted:#8d95a2;--line:rgba(233,230,220,.16);--amber:#e3b866;
+ --disp:"Fraunces","Iowan Old Style",Georgia,serif;--serif:"Newsreader","Iowan Old Style",Palatino,Georgia,serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+ color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);scroll-behavior:smooth;background:var(--bg)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.55;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+a{color:inherit}
+.mono{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.wrap{position:relative;z-index:2;max-width:1120px;margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+.stars{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;background-image:radial-gradient(1.4px 1px at 96% 48%,#fff,transparent),radial-gradient(1.4px 1.4px at 85% 70%,#fff,transparent),radial-gradient(1px 1px at 33% 86%,#fff,transparent),radial-gradient(1px 1px at 16% 50%,#fff,transparent),radial-gradient(1px 1px at 50% 72%,#fff,transparent),radial-gradient(1px 1.4px at 33% 4%,#fff,transparent),radial-gradient(1.4px 1px at 54% 38%,#fff,transparent),radial-gradient(1px 1px at 22% 12%,#fff,transparent),radial-gradient(1px 1.4px at 81% 59%,#fff,transparent),radial-gradient(1px 1px at 2% 3%,#fff,transparent),radial-gradient(1px 1px at 23% 24%,#fff,transparent),radial-gradient(1px 1px at 27% 72%,#fff,transparent),radial-gradient(1.4px 1.4px at 28% 26%,#fff,transparent),radial-gradient(1.4px 1px at 51% 41%,#fff,transparent),radial-gradient(1px 1px at 55% 24%,#fff,transparent),radial-gradient(1px 1px at 10% 45%,#fff,transparent),radial-gradient(1px 1.4px at 77% 3%,#fff,transparent),radial-gradient(1.4px 1.4px at 92% 46%,#fff,transparent),radial-gradient(1px 1px at 47% 42%,#fff,transparent),radial-gradient(1px 1.4px at 42% 26%,#fff,transparent),radial-gradient(1px 1px at 92% 25%,#fff,transparent),radial-gradient(1px 1px at 4% 48%,#fff,transparent),radial-gradient(1px 1px at 72% 56%,#fff,transparent),radial-gradient(1px 1px at 76% 4%,#fff,transparent),radial-gradient(1px 1px at 92% 26%,#fff,transparent),radial-gradient(1.4px 1px at 17% 34%,#fff,transparent),radial-gradient(1px 1px at 67% 48%,#fff,transparent),radial-gradient(1.4px 1px at 61% 16%,#fff,transparent),radial-gradient(1.4px 1.4px at 49% 40%,#fff,transparent),radial-gradient(1px 1px at 13% 29%,#fff,transparent),radial-gradient(1px 1.4px at 80% 49%,#fff,transparent),radial-gradient(1px 1px at 37% 92%,#fff,transparent),radial-gradient(1.4px 1px at 41% 90%,#fff,transparent),radial-gradient(1px 1px at 24% 13%,#fff,transparent);animation:tw 9s ease-in-out infinite alternate}
+@keyframes tw{from{opacity:.22}to{opacity:.65}}
+.moon{position:fixed;z-index:1;right:-7vw;top:14vh;width:min(54vw,480px);aspect-ratio:1;opacity:.3;pointer-events:none;filter:drop-shadow(0 0 40px rgba(227,184,102,.28))}
+.moon svg{display:block;width:100%;height:100%}
+
+.mast{position:sticky;top:env(safe-area-inset-top,0px);z-index:25;background:rgba(10,15,22,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.mast .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px}
+.brand{font-family:var(--disp);font-size:1.1rem;font-style:italic;text-decoration:none;white-space:nowrap}
+nav{display:flex;gap:clamp(12px,2.2vw,26px);align-items:center;overflow-x:auto;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav a{text-decoration:none;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap;padding:6px 0;transition:color .4s}
+nav a:hover{color:var(--amber)}
+#lang{font:inherit;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;background:none;color:var(--ink);border:1px solid var(--line);padding:5px 10px;cursor:pointer;transition:border-color .3s,color .3s}
+#lang:hover{border-color:var(--amber);color:var(--amber)}
+
+.hero{position:relative;min-height:calc(100vh - 60px);min-height:calc(100svh - 60px);display:flex;align-items:flex-end;padding:0 0 clamp(36px,7vw,84px)}
+.cv{position:absolute;top:0;bottom:0;left:50%;width:100vw;margin-left:-50vw;background:#0a0f16;overflow:hidden}
+.cv canvas{position:absolute;inset:0;width:100%;height:100%}
+.cv::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,15,22,.5),rgba(10,15,22,0) 30%,rgba(10,15,22,.1) 55%,#0a0f16 100%),linear-gradient(90deg,rgba(10,15,22,.72),transparent 68%)}
+.ht{position:relative;z-index:2;max-width:760px}
+.hero h1{font-family:var(--disp);font-weight:300;font-size:clamp(2.6rem,7.4vw,6rem);line-height:1.02;letter-spacing:-.02em;margin:1rem 0 1.4rem}
+.hero h1 em{font-style:italic;color:var(--amber)}
+.lede{max-width:36ch;font-size:1.2rem;color:#c3c6cc;margin:0 0 1.4rem}
+
+section.s{padding:clamp(40px,7vw,84px) 0;border-top:1px solid var(--line)}
+.sh{display:grid;grid-template-columns:170px 1fr;gap:12px;align-items:start;margin-bottom:clamp(22px,3.4vw,40px)}
+.sh .mono b{display:block;font-family:var(--disp);font-weight:300;font-size:1.7rem;letter-spacing:0;color:var(--amber);line-height:1.1;margin-bottom:.25rem}
+.sh h2{font-family:var(--disp);font-weight:300;font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.1;margin:0;letter-spacing:-.01em}
+.sh p{grid-column:2;margin:.2rem 0 0;color:var(--muted);max-width:52ch}
+.row{display:grid;grid-template-columns:90px 1fr auto;gap:12px 24px;padding:22px 0 22px 0;border-top:1px solid var(--line);align-items:baseline;transition:padding-left .5s ease,border-color .5s}
+.row:hover{padding-left:12px;border-top-color:var(--amber)}
+.row h3{font-weight:400;font-size:1.4rem;margin:0;line-height:1.25}
+.row p{margin:.35rem 0 0;color:#aeb3bb;max-width:58ch;font-size:1rem}
+.row p a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--amber);text-decoration-thickness:1px;text-underline-offset:3px;transition:color .3s}
+.row p a:hover{color:var(--amber)}
+.row .r{text-align:right}
+.row a.go,.credit a{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--amber);border-bottom:1px solid var(--amber)}
+.wf{display:flex;align-items:center;gap:2px;height:34px;margin-top:.8rem}
+.wf i{display:block;width:2px;background:var(--ink);opacity:.4;height:var(--h)}
+.row:hover .wf i{background:var(--amber);opacity:1;animation:pulse 1.8s ease-in-out infinite;animation-delay:var(--d)}
+@keyframes pulse{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.42)}}
+.feat{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(14px,3vw,36px);margin-bottom:clamp(24px,4vw,48px);align-items:start}
+.frm{aspect-ratio:3/4;background:#000;overflow:hidden;border:1px solid var(--line)}
+.frm video{display:block;width:100%;height:100%;object-fit:cover}
+.colg img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;border:1px solid var(--line)}
+.feat figcaption,.il figcaption{margin-top:.6rem}
+figure{margin:0}
+.stroma{margin:0 0 clamp(20px,3vw,36px)}
+.fuse{--m:url(assets/images/imagen1.png);width:min(100%,520px);aspect-ratio:870/607;background-image:url(assets/images/imagen2.jpg);background-size:150%;background-position:0% 50%;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat;animation:fusedrift 34s ease-in-out infinite alternate}
+@keyframes fusedrift{from{background-position:0% 40%}to{background-position:100% 60%}}
+.il{display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(10px,1.6vw,20px);align-items:start}
+.ilc{display:flex;flex-direction:column;gap:clamp(10px,1.6vw,20px)}
+.il img{display:block;width:100%;height:auto;border:1px solid var(--line)}
+.vfeat{margin-bottom:clamp(24px,4vw,48px)}
+.vfrm{aspect-ratio:16/9;background:#000;border:1px solid var(--line);overflow:hidden}
+.vfrm video{display:block;width:100%;height:100%;object-fit:contain}
+.vfeat figcaption{margin-top:.6rem}
+.credit{margin-top:1.6rem}
+.about p{font-family:var(--disp);font-size:clamp(1.2rem,2.4vw,1.65rem);font-weight:300;line-height:1.5;max-width:46ch;margin:0 0 0 182px}
+#con{background:linear-gradient(180deg,transparent,rgba(227,184,102,.08))}
+.contact a.big{display:inline-block;font-family:var(--disp);font-size:clamp(1.6rem,4.6vw,3.2rem);font-weight:300;text-decoration:none;color:var(--amber);border-bottom:1px solid var(--amber);margin:.5rem 0 1.6rem;word-break:break-all}
+.links{display:flex;flex-wrap:wrap;gap:8px 26px}
+.links a{font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--muted);transition:color .3s}
+.links a:hover{color:var(--amber)}
+footer{border-top:1px solid var(--line);padding:24px 0 40px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.rv{opacity:0;transform:translateY(14px);transition:opacity 1.3s ease,transform 1.3s ease}
+.rv.in{opacity:1;transform:none}
+.prog{position:fixed;left:0;top:calc(env(safe-area-inset-top,0px) + 60px);height:1px;width:100%;background:var(--amber,var(--accent));transform:scaleX(0);transform-origin:0 50%;z-index:26;pointer-events:none}
+.gsap .rv{opacity:1;transform:none;transition:none}
+.pw{overflow:hidden;border:1px solid var(--line)}
+.il .pw img,.colg .pw img{border:0}
+
+@media (max-width:760px){
+ .hero{align-items:flex-end}
+ .sh,.row{grid-template-columns:1fr}
+ .sh p{grid-column:1}
+ .row .r{text-align:left}
+ .feat{grid-template-columns:1fr}
+ .il{grid-template-columns:1fr 1fr}
+ .about p{margin-left:0}
+ .ilc:nth-child(2){grid-column:1/-1;order:-1}
+ .il img.tall{aspect-ratio:4/5;object-fit:cover;object-position:50% 66%}
+ .moon{width:78vw;right:-26vw;top:20vh}
+ .brand{font-size:1rem}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+
+/* PORTADA CINEMATOGRÁFICA — no afecta a las secciones existentes */
+.hero-cinema{isolation:isolate;min-height:min(940px,calc(100svh - 60px));min-height:max(680px,calc(100svh - 60px));display:flex;align-items:center;position:relative;padding:90px clamp(18px,5vw,64px) 135px;overflow:hidden;border-bottom:1px solid var(--line)}
+.cinema-scenes,.cinema-scene,.cinema-grain{position:absolute;inset:0}
+.cinema-scenes{z-index:-2;background:#101722}
+.cinema-scene{overflow:hidden;opacity:0;animation:cinFade 18s infinite}
+.cinema-scene img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 42%;filter:saturate(.72) contrast(1.1) brightness(.7);transform:scale(1.08);animation:cinZoom 18s ease-in-out infinite alternate}
+.cinema-scene-a{animation-delay:-2s}
+.cinema-scene-b{animation-delay:7s}
+.cinema-scene-b img{animation-delay:5s;object-position:center 30%}
+.cinema-scenes:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,9,16,.94),rgba(5,9,16,.7) 48%,rgba(5,9,16,.08)),linear-gradient(0deg,#0a0f16 0%,rgba(10,15,22,.1) 46%,rgba(10,15,22,.35) 100%);z-index:2}
+.cinema-grain{z-index:3;pointer-events:none;opacity:.12;background-image:url("assets/images/imagen18.svg")}
+.cinema-content{position:relative;z-index:4;max-width:790px;width:100%;margin:0 auto 0 max(0px,calc((100vw - 1170px)/2));padding-bottom:35px}
+.cinema-eyebrow{display:flex;align-items:center;gap:12px;color:var(--amber);letter-spacing:.16em}
+.cinema-dot{width:7px;height:7px;background:var(--amber);border-radius:50%;box-shadow:0 0 15px var(--amber)}
+.hero-cinema h1{font-size:clamp(3rem,8vw,7.6rem);line-height:.99;max-width:10.5ch;margin:24px 0 25px;letter-spacing:-.035em;text-wrap:balance;text-shadow:0 5px 40px rgba(0,0,0,.5)}
+.hero-cinema h1 em{color:var(--amber)}
+.cinema-desc{font-size:clamp(1.05rem,2vw,1.4rem);color:#e2e0dc;max-width:42ch;line-height:1.5}
+.cinema-actions{display:flex;gap:24px;align-items:center;flex-wrap:wrap;margin-top:34px}
+.cinema-button{display:inline-flex;align-items:center;gap:24px;text-decoration:none;background:var(--amber);color:#0a0f16;padding:15px 19px;font:400 .73rem var(--mono);text-transform:uppercase;letter-spacing:.075em;transition:transform .25s,background .25s}
+.cinema-button:hover{transform:translateY(-3px);background:#f4d392}
+.cinema-link{font:.72rem var(--mono);color:#ece9e1;text-decoration:none;text-transform:uppercase;letter-spacing:.075em;border-bottom:1px solid rgba(233,230,220,.5);padding-bottom:8px}
+.cinema-link:hover{color:var(--amber);border-color:var(--amber)}
+.cinema-reel{position:absolute;z-index:5;right:clamp(18px,4vw,65px);bottom:36px;display:flex;gap:12px;max-width:560px}
+.cinema-mini{position:relative;display:flex;align-items:center;gap:10px;width:240px;min-height:76px;padding:9px;background:rgba(10,15,22,.78);backdrop-filter:blur(10px);border:1px solid rgba(233,230,220,.22);text-decoration:none;transition:transform .25s,border-color .25s}
+.cinema-mini:hover{transform:translateY(-4px);border-color:var(--amber)}
+.cinema-mini img{width:60px;height:58px;object-fit:cover;flex-shrink:0}
+.cinema-mini span:nth-of-type(1){display:flex;flex-direction:column;gap:3px;min-width:0}
+.cinema-mini small{font:400 .52rem var(--mono);letter-spacing:.04em;color:var(--amber)}
+.cinema-mini strong{font:400 1.17rem var(--disp)}
+.cinema-mini>span:last-child{margin-left:auto;color:var(--amber)}
+.cinema-index{position:absolute;z-index:5;left:clamp(18px,5vw,64px);bottom:52px;display:flex;gap:18px;font-size:.63rem;color:#c6c8c9}
+@keyframes cinFade{0%,44%{opacity:1}50%,94%{opacity:0}100%{opacity:1}}
+@keyframes cinZoom{from{transform:scale(1.06)}to{transform:scale(1.22)}}
+@media(max-width:900px){.hero-cinema{min-height:760px;padding:100px 24px 180px}.cinema-content{margin:0}.cinema-scenes:after{background:linear-gradient(90deg,rgba(5,9,16,.86),rgba(5,9,16,.42)),linear-gradient(0deg,#0a0f16,transparent 70%)}.cinema-reel{left:24px;right:24px;bottom:26px;max-width:none}.cinema-mini{flex:1;min-width:0}.cinema-index{display:none}}
+@media(max-width:520px){.hero-cinema{min-height:760px;padding:90px 20px 175px;align-items:flex-start}.hero-cinema h1{font-size:clamp(3rem,14vw,4.6rem);margin-top:30px}.cinema-actions{gap:20px}.cinema-reel{left:12px;right:12px;gap:8px}.cinema-mini{padding:6px;min-height:66px}.cinema-mini img{width:42px;height:51px}.cinema-mini small{font-size:.44rem}.cinema-mini strong{font-size:1rem}}
+@media(prefers-reduced-motion:reduce){.cinema-scene,.cinema-scene img{animation:none!important}.cinema-scene-a{opacity:1}.cinema-scene-b{opacity:0}}
+
+
+/* Identidad artística de portada · v4 */
+.cinema-content{max-width:860px}
+.cinema-eyebrow{font-size:.68rem;letter-spacing:.18em;text-shadow:0 2px 18px rgba(0,0,0,.7)}
+.hero-cinema h1{max-width:12.8ch;font-size:clamp(3.1rem,7.1vw,7rem);line-height:1.035;letter-spacing:-.045em;font-weight:300}
+.hero-cinema h1 em{font-weight:300;white-space:normal}
+.cinema-desc{max-width:47ch;line-height:1.55}
+@media(max-width:520px){.cinema-eyebrow{font-size:.58rem;letter-spacing:.09em}.hero-cinema h1{font-size:clamp(2.65rem,12vw,4.6rem);max-width:12ch}}
+
+/* Quince cuentos inusuales — sección editorial original */
+.book-section{margin:10px 0 58px;border-top:1px solid var(--line)}
+.book-intro{display:grid;grid-template-columns:minmax(260px,.82fr) minmax(300px,1.18fr);gap:clamp(24px,5vw,72px);align-items:center;padding:clamp(26px,5vw,65px) 0}
+.book-cover{position:relative;margin:0;padding:18px;background:linear-gradient(145deg,#1c1d1b,#080c12);box-shadow:0 18px 60px rgba(0,0,0,.3);border:1px solid rgba(227,184,102,.25)}
+.book-cover img{display:block;width:100%;height:min(570px,56vw);min-height:320px;object-fit:cover;object-position:50% 45%;filter:contrast(1.05)}
+.book-cover figcaption{padding:12px 2px 0}
+.book-copy .mono{color:var(--amber)}
+.book-copy h3{font-family:var(--disp);font-size:clamp(2.5rem,5.3vw,5.1rem);font-weight:300;line-height:1.02;letter-spacing:-.035em;margin:16px 0 24px}
+.book-copy h3 em{font-style:italic;color:var(--amber)}
+.book-copy p{max-width:55ch;font-size:clamp(1.03rem,1.5vw,1.23rem);line-height:1.65;color:#c9c8c2;margin:0 0 16px}
+.book-credits{border-top:1px solid var(--line);padding-top:22px;margin-top:26px;display:grid;gap:5px}
+.book-credits p{margin:0;font-size:.95rem}
+.book-credits strong{font-weight:400;color:var(--ink)}
+.book-credits .book-publisher{font-family:var(--mono);letter-spacing:.06em;font-size:.7rem;color:var(--muted);text-transform:uppercase;margin-top:8px}
+.book-gallery-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding:25px 0 18px}
+.book-gallery-head h4{font-family:var(--disp);font-size:clamp(1.6rem,3vw,2.3rem);font-weight:300;margin:0}
+.book-gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.book-gallery figure{margin:0;min-width:0}
+.book-gallery img{display:block;width:100%;height:clamp(180px,24vw,310px);object-fit:cover;border:1px solid var(--line);filter:saturate(.85);transition:filter .4s,transform .4s}
+.book-gallery img:hover{filter:saturate(1.05);transform:scale(1.015)}
+.book-gallery figcaption{padding-top:9px;color:var(--muted);font-family:var(--mono);letter-spacing:.07em;font-size:.67rem}
+.book-gallery-credit{font-size:.88rem;color:var(--muted);margin:17px 0 0}
+.book-trailer{display:grid;grid-template-columns:minmax(190px,.6fr) minmax(200px,1fr);gap:26px;align-items:center;margin-top:48px;border-top:1px solid var(--line);padding-top:30px}
+.book-trailer .frm{max-width:370px}
+.book-trailer h4{font-family:var(--disp);font-size:clamp(1.5rem,3vw,2.4rem);font-weight:300;margin:10px 0}
+.book-trailer p{color:var(--muted);max-width:47ch}
+@media(max-width:760px){.book-intro{grid-template-columns:1fr}.book-cover{max-width:450px;margin:auto}.book-cover img{height:510px}.book-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.book-gallery img{height:290px}.book-trailer{grid-template-columns:1fr}.book-trailer .frm{max-width:310px}}
+@media(max-width:430px){.book-gallery img{height:205px}.book-cover img{height:440px;min-height:0}.book-gallery-head{display:block}}
+
+
+/* Versión 6 — movimiento cinematográfico para imagen abstracta aportada por el autor */
+.hero-cinema .cinema-scene-a{
+  opacity:1!important;
+  animation:none!important;
+}
+.hero-cinema .cinema-scene-b{
+  display:none!important;
+}
+.hero-cinema .cinema-scene-a img{
+  width:108%;
+  height:108%;
+  margin:-4%;
+  object-fit:cover;
+  object-position:center;
+  filter:saturate(1.08) contrast(1.07) brightness(.86);
+  transform-origin:52% 47%;
+  animation:abstractCurrent 27s ease-in-out infinite alternate!important;
+  will-change:transform;
+}
+.hero-cinema .cinema-scenes:after{
+  background:
+    linear-gradient(90deg,rgba(5,9,16,.90),rgba(5,9,16,.62) 43%,rgba(5,9,16,.12) 86%),
+    linear-gradient(0deg,#0a0f16 0%,rgba(10,15,22,.02) 45%,rgba(10,15,22,.24) 100%);
+}
+@keyframes abstractCurrent {
+  0%   {transform:scale(1.06) translate3d(-1.6%,1.0%,0) rotate(-.4deg)}
+  35%  {transform:scale(1.16) translate3d(1.4%,-1.1%,0) rotate(.45deg)}
+  70%  {transform:scale(1.12) translate3d(-.7%,-1.9%,0) rotate(-.25deg)}
+  100% {transform:scale(1.23) translate3d(1.8%,.9%,0) rotate(.35deg)}
+}
+@media (max-width:900px){
+ .hero-cinema .cinema-scenes:after{
+   background:linear-gradient(90deg,rgba(5,9,16,.87),rgba(5,9,16,.46)),
+              linear-gradient(0deg,#0a0f16,transparent 80%);
+ }
+}
+@media (prefers-reduced-motion:reduce){
+ .hero-cinema .cinema-scene-a img{animation:none!important;transform:scale(1.06);will-change:auto}
+}
+
+
+.lavadora-preview-note{font-size:.85rem;color:var(--muted);margin:12px 0 0;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="stars" aria-hidden="true"></div>
+<div class="moon" aria-hidden="true"><svg viewBox="-52 -52 104 104"><circle r="48" fill="#121a28" stroke="#e9e6dc" stroke-opacity=".5" stroke-width=".6"/><path id="lit" fill="#efe6cf" d=""/></svg></div>
+
+<header class="mast"><div class="wrap">
+ <a class="brand" href="#top">Omar Durán Guerra</a>
+ <nav>
+  <a href="#lit" data-t="nLit"></a><a href="#mus" data-t="nMus"></a><a href="#art" data-t="nArt"></a><a href="#ani" data-t="nAni"></a><a href="#sob" data-t="nSob"></a><a href="#con" data-t="nCon"></a>
+  <button id="lang" aria-label="Cambiar idioma / Change language">EN</button>
+ </nav>
+</div></header>
+
+<div class="wrap" id="top">
+ <section class="hero hero-cinema" aria-label="Portada cinematográfica">
+  <div class="cinema-scenes" aria-hidden="true">
+    <div class="cinema-scene cinema-scene-a"><img src="assets/images/imagen3.jpg" alt="" decoding="async"></div>
+    <div class="cinema-scene cinema-scene-b"><img src="assets/images/imagen4.jpg" alt="" decoding="async"></div>
+    <div class="cinema-grain"></div>
+  </div>
+  <div class="cinema-content">
+    <div class="cinema-eyebrow mono"><span class="cinema-dot"></span><span data-t="cinKicker">OMAR DURÁN GUERRA / PORTAFOLIO CREATIVO</span></div>
+    <h1 data-html data-t="cinTitle">Palabra, sonido <em>e imagen.</em></h1>
+    <p class="cinema-desc" data-t="cinDesc">Escribo historias, creo música y exploro imágenes en movimiento. Distintos lenguajes para construir un universo propio.</p>
+    <div class="cinema-actions">
+      <a class="cinema-button" href="#ani"><span data-t="cinExplore">Explorar animaciones</span><span aria-hidden="true">↗</span></a>
+      <a class="cinema-link" href="#lit"><span data-t="cinRead">Descubrir mis escritos</span><span aria-hidden="true">↓</span></a>
+    </div>
+  </div>
+  <div class="cinema-reel" aria-label="Animaciones destacadas">
+    <a class="cinema-mini" href="#cicada"><img src="assets/images/imagen3.jpg" alt="Arte abstracto de portada"><span><small data-t="cinFilm">CORTOMETRAJE ANIMADO</small><strong>Cícada</strong></span><span aria-hidden="true">↗</span></a>
+    <a class="cinema-mini" href="#lavadora"><img src="assets/images/imagen4.jpg" alt="Fotograma de Lavadora"><span><small data-t="cinFilm">CORTOMETRAJE ANIMADO</small><strong>Lavadora</strong></span><span aria-hidden="true">↗</span></a>
+  </div>
+  <div class="cinema-index mono">01 / 01 <span data-t="cinCaption">FOTOGRAMAS DE OBRAS ANIMADAS</span></div>
+</section>
+
+ <section class="s rv" id="lit">
+  <div class="sh"><span class="mono"><b>I</b><span data-t="ph1"></span></span><h2 data-t="tLit"></h2><p data-t="pLit"></p></div>
+
+  <div class="book-section" id="libro-quince-cuentos">
+    <div class="book-intro rv">
+      <figure class="book-cover">
+        <img src="assets/images/imagen5.jpg" alt="Ilustración central de la portada de Quince cuentos inusuales: figura solitaria en un paisaje ocre" loading="lazy">
+        <figcaption class="mono" data-t="bookCoverLabel">PORTADA DEL LIBRO</figcaption>
+      </figure>
+      <div class="book-copy">
+        <span class="mono" data-t="bookEyebrow">OBRA PUBLICADA / 15 RELATOS</span>
+        <h3>Quince cuentos <em>inusuales</em></h3>
+        <p data-t="bookText1">Una colección de relatos donde lo cotidiano se abre a lo extraño, lo íntimo, lo absurdo y lo inquietante. A través de personajes y situaciones que tensionan la realidad, el libro explora distintas formas de lo inusual: aquello que sorprende, descoloca o revela una grieta en la experiencia ordinaria.</p>
+        <p data-t="bookText2">Las ilustraciones de Boli Nolasco amplían este universo narrativo con una fuerza visual que acompaña, interpreta y prolonga el clima de los cuentos.</p>
+        <div class="book-credits">
+          <p><span data-t="bookAuthor">Textos</span> · <strong>Omar Durán Guerra</strong></p>
+          <p><span data-t="bookIllustrations">Ilustraciones</span> · <strong>Boli Nolasco</strong></p>
+          <p class="book-publisher">Editorial Gato Blanco · 2021</p>
+        </div>
+      </div>
+    </div>
+    <div class="book-gallery-head"><h4 data-t="bookGalleryTitle">Un universo ilustrado</h4><span class="mono" data-t="bookGalleryMeta">CUATRO MIRADAS A LOS RELATOS</span></div>
+    <div class="book-gallery rv">
+      <figure><img src="assets/images/imagen6.jpg" alt="Ilustración de Boli Nolasco: niño con ojos rojos ante un escenario rojizo" loading="lazy"><figcaption data-t="bookImage1">Ilustración 01</figcaption></figure>
+      <figure><img src="assets/images/imagen7.jpg" alt="Ilustración de Boli Nolasco: persona con camiseta blanca y fondo ocre" loading="lazy"><figcaption data-t="bookImage2">Ilustración 02</figcaption></figure>
+      <figure><img src="assets/images/imagen8.jpg" alt="Ilustración de Boli Nolasco: un ratón encima de una lavadora" loading="lazy"><figcaption data-t="bookImage3">Ilustración 03</figcaption></figure>
+      <figure><img src="assets/images/imagen9.jpg" alt="Ilustración de Boli Nolasco: retrato de personaje con expresión intensa" loading="lazy"><figcaption data-t="bookImage4">Ilustración 04</figcaption></figure>
+    </div>
+    <p class="book-gallery-credit" data-t="bookCreditFoot">Ilustraciones originales de Boli Nolasco para Quince cuentos inusuales.</p>
+    <div class="book-trailer rv">
+      <figure><div class="frm"><video controls preload="metadata" playsinline poster="assets/images/imagen10.jpg" src="assets/videos/video1.mp4" aria-label="Anuncio del libro Quince cuentos inusuales"></video></div><figcaption class="mono" data-t="vidCap">Anuncio del libro</figcaption></figure>
+      <div><span class="mono" data-t="bookMediaLabel">EL LIBRO EN IMÁGENES</span><h4 data-t="bookMediaTitle">Una invitación a entrar en sus historias</h4><p data-t="bookMediaDesc">Pieza audiovisual de presentación del libro. El video se mostrará aquí cuando esté disponible mediante un enlace público o un archivo compatible.</p></div>
+    </div>
+  </div>
+
+  <div id="litList"></div>
+ </section>
+
+ <section class="s rv" id="mus">
+  <div class="sh"><span class="mono"><b>II</b><span data-t="ph2"></span></span><h2 data-t="tMus"></h2><p data-t="pMus"></p></div>
+  <div class="stroma rv"><div class="fuse" role="img" aria-label="Stroma, logotipo"></div></div>
+  <div id="musList"></div>
+ </section>
+
+ <section class="s rv" id="art">
+  <div class="sh"><span class="mono"><b>III</b><span data-t="ph3"></span></span><h2 data-t="tArt"></h2><p data-t="pArt"></p></div>
+  <div class="il rv"><div class="ilc"><figure><img src="assets/images/imagen11.jpg" alt="Un niño de ojos rojos con un cuchillo en la mano, ante una ventana roja"><figcaption class="mono">01 · Quince cuentos inusuales</figcaption></figure><figure><img src="assets/images/imagen12.jpg" alt="Un hombre en camiseta blanca, con la mano en el pecho, sobre un fondo amarillo"><figcaption class="mono">02 · Quince cuentos inusuales</figcaption></figure></div><div class="ilc"><figure><img class="tall" src="assets/images/imagen13.jpg" alt="Una niña de cabello blanco en medio de un desierto dorado"><figcaption class="mono">03 · Quince cuentos inusuales</figcaption></figure></div><div class="ilc"><figure><img src="assets/images/imagen14.jpg" alt="Una rata sobre una lavadora vieja"><figcaption class="mono">04 · Lavadora</figcaption></figure><figure><img src="assets/images/imagen15.jpg" alt="Una mujer de cabello oscuro entre unos brazos de traje negro, con el ceño fruncido"><figcaption class="mono">05 · Quince cuentos inusuales</figcaption></figure></div></div>
+  <p class="mono credit"><span data-t="credit"></span> <a href="https://www.artstation.com/bolinolasco" target="_blank" rel="noopener">ArtStation ↗</a></p>
+ </section>
+
+ <section class="s rv" id="ani">
+  <div class="sh"><span class="mono"><b>IV</b><span data-t="ph4"></span></span><h2 data-t="tAni"></h2><p data-t="pAni"></p></div>
+  <div class="vfeat rv" id="cicada"><figure><div class="vfrm"><video controls preload="metadata" playsinline poster="assets/images/imagen16.jpg" aria-label="Cícada, avance de ocho segundos"><source src="assets/videos/video2.mp4" type="video/mp4"></video></div><figcaption class="mono" data-t="cicCap"></figcaption></figure></div>
+  <div class="vfeat rv" id="lavadora"><figure><div class="vfrm"><video controls preload="metadata" playsinline poster="assets/images/imagen4.jpg" aria-label="Lavadora, avance audiovisual de 13 segundos"><source src="assets/videos/video3.mp4" type="video/mp4">Tu navegador no admite video HTML5.</video></div><figcaption class="mono" data-t="lavCap"></figcaption><p class="lavadora-preview-note"><span data-t="lavPreviewNote"></span></p></figure></div>
+  <div id="aniList"></div>
+ </section>
+
+ <section class="s rv" id="sob">
+  <div class="sh"><span class="mono"><b>V</b><span data-t="ph5"></span></span><h2 data-t="tSob"></h2></div>
+  <div class="about"><p data-t="aSob"></p></div>
+ </section>
+
+ <section class="s rv contact" id="con">
+  <div class="sh"><span class="mono"><b>VI</b><span data-t="ph6"></span></span><h2 data-t="tCon"></h2><p data-t="pCon"></p></div>
+  <a class="big" href="mailto:hola@tudominio.com">hola@tudominio.com</a>
+  <div class="links"><a href="https://open.spotify.com/album/7llUuZTKw5CL1C98NneUfc" target="_blank" rel="noopener">Spotify</a><a href="https://a.co/d/04S1v1Fh" target="_blank" rel="noopener">Amazon</a><a href="https://www.instagram.com/guerrachino/" target="_blank" rel="noopener">Instagram · @guerrachino</a><a href="https://www.facebook.com/share/1FkwT41bkB/" target="_blank" rel="noopener">Facebook · Omar Duran Guerra</a></div>
+ </section>
+
+ <footer><span class="mono">© 2026 Omar Durán Guerra</span><span class="mono" data-t="foot"></span></footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+var D={
+es:{bookCoverLabel:"PORTADA DEL LIBRO",bookEyebrow:"OBRA PUBLICADA / 15 RELATOS",bookText1:"Una colección de relatos donde lo cotidiano se abre a lo extraño, lo íntimo, lo absurdo y lo inquietante. A través de personajes y situaciones que tensionan la realidad, el libro explora distintas formas de lo inusual: aquello que sorprende, descoloca o revela una grieta en la experiencia ordinaria.",bookText2:"Las ilustraciones de Boli Nolasco amplían este universo narrativo con una fuerza visual que acompaña, interpreta y prolonga el clima de los cuentos.",bookAuthor:"Textos",bookIllustrations:"Ilustraciones",bookGalleryTitle:"Un universo ilustrado",bookGalleryMeta:"CUATRO MIRADAS A LOS RELATOS",bookImage1:"Ilustración 01",bookImage2:"Ilustración 02",bookImage3:"Ilustración 03",bookImage4:"Ilustración 04",bookCreditFoot:"Ilustraciones originales de Boli Nolasco para Quince cuentos inusuales.",bookMediaLabel:"EL LIBRO EN IMÁGENES",bookMediaTitle:"Una invitación a entrar en sus historias",bookMediaDesc:"Pieza audiovisual de presentación del libro. El video se mostrará aquí cuando esté disponible mediante un enlace público o un archivo compatible.",cinKicker:"OMAR DURÁN GUERRA / PORTAFOLIO CREATIVO",cinTitle:"Palabra, sonido <em>e imagen.</em>",cinDesc:"Escribo historias, creo música y exploro imágenes en movimiento. Distintos lenguajes para construir un universo propio.",cinExplore:"Explorar animaciones",cinRead:"Descubrir mis escritos",cinFilm:"OBRA ANIMADA",cinCaption:"FOTOGRAMAS DE OBRAS ANIMADAS",nLit:"Literatura",nMus:"Música",nArt:"Ilustración",nAni:"Animación",nCon:"Contacto",ph1:"Luna nueva",ph2:"Creciente",ph3:"Cuarto creciente",ph4:"Gibosa",ph5:"Luna llena",ph6:"Amanecer",nSob:"Sobre mí",tSob:"Sobre mí",aSob:"Mi trabajo se mueve entre la narrativa, la música y las imágenes en movimiento. Publiqué Quince cuentos inusuales con Editorial Gato Blanco y escribo cuentos para la revista Letras Insomnes. Mi música lleva el nombre de Stroma. Soy maestro en ciencias por la UAM-I y colaboro en ideas musicales y video en Alter.lab.",
+ kicker:"Portafolio · Edición nocturna",h1:"Palabras, sonidos e imágenes <em>para quien no duerme</em>.",lede:"Cuentos, música y piezas en movimiento, ordenados por las fases de la luna.",
+ flowCap:"Fotografía dibujada con líneas en movimiento · código",vidCap:"Anuncio del libro",lavCap:"Lavadora · cuento animado",lavPreviewNote:"Avance de 13 segundos. Próximamente: enlace a la obra completa.",cicCap:"Cícada · avance audiovisual · 8 segundos",credit:"Ilustraciones de Quince cuentos inusuales: Boli Nolasco ·",colCap:"Ilustraciones de Quince cuentos inusuales",
+ tLit:"Literatura",pLit:"Cuentos, textos largos y un libro.",
+ tMus:"Música",pMus:"Stroma · composiciones y grabaciones.",
+ tArt:"Ilustración",pArt:"Las imágenes del libro, por Boli Nolasco.",
+ tAni:"Animación y código",pAni:"Breves momentos emblemáticos de los cuentos.",
+ tCon:"Contacto",pCon:"Para colaborar, publicar o simplemente escribir.",
+ foot:"Hecho a mano, con código",read:"Ver",listen:"Escuchar",view:"Ver pieza",med:"Técnica",genre:"Género"},
+en:{bookCoverLabel:"BOOK COVER",bookEyebrow:"PUBLISHED WORK / 15 STORIES",bookText1:"A collection of stories in which the everyday opens onto the strange, the intimate, the absurd and the unsettling. Through characters and situations that challenge our sense of reality, the book explores many forms of the unusual: what surprises, disorients or reveals a crack in ordinary experience.",bookText2:"Boli Nolasco’s illustrations expand this narrative world through a visual language that accompanies, interprets and extends the atmosphere of the stories.",bookAuthor:"Writing",bookIllustrations:"Illustrations",bookGalleryTitle:"An illustrated universe",bookGalleryMeta:"FOUR VISIONS OF THE STORIES",bookImage1:"Illustration 01",bookImage2:"Illustration 02",bookImage3:"Illustration 03",bookImage4:"Illustration 04",bookCreditFoot:"Original illustrations by Boli Nolasco for Quince cuentos inusuales.",bookMediaLabel:"THE BOOK IN IMAGES",bookMediaTitle:"An invitation into its stories",bookMediaDesc:"An audiovisual introduction to the book. The video will appear here once a public link or compatible file is available.",cinKicker:"OMAR DURÁN GUERRA / CREATIVE PORTFOLIO",cinTitle:"Words, sound <em>and image.</em>",cinDesc:"I write stories, create music and explore moving images. Different forms of expression shaping a creative world of my own.",cinExplore:"Explore animations",cinRead:"Discover my writing",cinFilm:"ANIMATED WORK",cinCaption:"FRAMES FROM ANIMATED WORKS",nLit:"Writing",nMus:"Music",nArt:"Illustration",nAni:"Motion",nCon:"Contact",ph1:"New moon",ph2:"Crescent",ph3:"First quarter",ph4:"Gibbous",ph5:"Full moon",ph6:"Dawn",nSob:"About",tSob:"About",aSob:"My work moves between fiction, music and moving images. I published Quince cuentos inusuales with Editorial Gato Blanco and write stories for the magazine Letras Insomnes. My music goes by the name Stroma. I hold a master’s degree in science from UAM-I and collaborate on musical ideas and video at Alter.lab.",
+ kicker:"Portfolio · Night edition",h1:"Words, sound and images <em>for those who can’t sleep</em>.",lede:"Stories, music and moving pieces, arranged by the phases of the moon.",
+ flowCap:"Photograph drawn with moving lines · code",vidCap:"Book trailer",lavCap:"Lavadora · animated story",lavPreviewNote:"13-second preview. Full film link coming soon.",cicCap:"Cícada · 8-second preview",credit:"Illustrations for Quince cuentos inusuales: Boli Nolasco ·",colCap:"Illustrations from Quince cuentos inusuales",
+ tLit:"Writing",pLit:"Short stories, longer texts and a book.",
+ tMus:"Music",pMus:"Stroma · compositions and recordings.",
+ tArt:"Illustration",pArt:"The illustrations from the book, by Boli Nolasco.",
+ tAni:"Motion and code",pAni:"Brief emblematic moments from the stories.",
+ tCon:"Contact",pCon:"To collaborate, publish, or simply write.",
+ foot:"Made by hand, with code",read:"View",listen:"Listen",view:"View piece",med:"Medium",genre:"Genre"}};
+var LIT=[
+ [["Quince cuentos inusuales","Quince cuentos inusuales"],["Libro de cuentos · 15 relatos · Editorial Gato Blanco","Story collection · 15 tales · Editorial Gato Blanco"],"2021",["Escenarios en cautiverio, hostiles e inusuales surgen de la pluma de Omar Durán Guerra. Los protagonistas que recorren estos relatos turbios van desde una rata preñada en busca de refugio y alimento; los miembros de una resistencia, víctimas de imperios ambiciosos y obsesivos por el poder en un escenario postapocalíptico; hasta los niños desahuciados de un siniestro orfanato donde el abuso y la corrupción definen el destino de los internos.<br><br>Siempre navegando por las risas, tristezas e incertidumbres de la mente humana, apoyándose en una prosa vertiginosa. Quince cuentos que nos adentran en la psicología de los submundos más humanos y desesperados, pasando por la fatalidad y el nihilismo de la vida misma. Visiones que son como pensamientos escabrosos, de conductas de venganza y soledad.","Hostile, unusual settings of captivity spring from the pen of Omar Durán Guerra. The protagonists who move through these murky tales range from a pregnant rat searching for shelter and food; to the members of a resistance, victims of empires ambitious and obsessed with power in a postapocalyptic world; to the doomed children of a sinister orphanage where abuse and corruption decide the fate of the inmates.<br><br>Always navigating the laughter, sorrow and uncertainty of the human mind, carried by a vertiginous prose. Fifteen stories that take us into the psychology of the most human and desperate underworlds, through the fatality and nihilism of life itself. Visions like lurid thoughts, of acts of revenge and loneliness."],"https://a.co/d/04S1v1Fh"],
+ [["Cícada","Cícada"],["Cuento","Short story"],"2025",["Un invierno, una planta y una familia que no se dice lo que siente.","A winter, a plant and a family that never says what it feels."],"#cicada"],
+ [["Lavadora","Lavadora"],["Cuento","Short story"],"—",["Un invierno helado en Rhode Island, el hambre y una lavadora.","A freezing winter in Rhode Island, hunger and a washing machine."],"#lavadora"],
+ [["Letras Insomnes","Letras Insomnes"],["Revista digital · colaboraciones","Digital magazine · contributions"],"—",["He escrito algunos cuentos para Letras Insomnes, revista digital. Entre ellos: <a href='https://letrasinsomnes.com/morenito/' target='_blank' rel='noopener'>Morenito</a> (2024); <a href='https://letrasinsomnes.com/supervisor/' target='_blank' rel='noopener'>Supervisor</a>, <a href='https://letrasinsomnes.com/estufita-escamilla/' target='_blank' rel='noopener'>Estufita Escamilla</a> y <a href='https://letrasinsomnes.com/cicada-en-invierno/' target='_blank' rel='noopener'>Cicada en invierno</a> (2025).","I have written some stories for Letras Insomnes, a digital magazine. Among them: <a href='https://letrasinsomnes.com/morenito/' target='_blank' rel='noopener'>Morenito</a> (2024); <a href='https://letrasinsomnes.com/supervisor/' target='_blank' rel='noopener'>Supervisor</a>, <a href='https://letrasinsomnes.com/estufita-escamilla/' target='_blank' rel='noopener'>Estufita Escamilla</a> and <a href='https://letrasinsomnes.com/cicada-en-invierno/' target='_blank' rel='noopener'>Cicada en invierno</a> (2025)."],"https://letrasinsomnes.com/author/omar-duran-guerra/"]];
+var MUS=[
+ [["Stroma","Stroma"],["Sencillo · 2019 · 5 canciones","Single · 2019 · 5 songs"],"https://open.spotify.com/album/7llUuZTKw5CL1C98NneUfc"],
+ [["Video con Alter.lab","Video with Alter.lab"],["Video · colaboración con Alter.lab","Video · collaboration with Alter.lab"],"https://youtu.be/JKyX8onVFV8","view"],
+ [["Patinando sobre el Rideau Canal","Skating on the Rideau Canal"],["Video · música original","Video · original music"],"https://youtu.be/KXy8WZbWBr0","view",["Música original de Eduardo Fierro y Omar Durán Guerra. Video grabado por Omar mientras patinaba sobre el Rideau Canal, en Ottawa, Canadá.","Original music by Eduardo Fierro and Omar Durán Guerra. Video filmed by Omar while skating on the Rideau Canal in Ottawa, Canada."]]];
+var ART=[["Sin título I","Untitled I"],["Sin título II","Untitled II"],["Sin título III","Untitled III"],["Sin título IV","Untitled IV"]];
+var ANI=[
+ [["Estudio de líneas","Line study"],["Una fotografía dibujada por líneas en movimiento, generadas por código: la pieza de la portada.","A photograph drawn by moving, code-generated lines: the piece on the cover."],"#top"]];
+
+var lang="es",root=document.documentElement;
+try{var sv=localStorage.getItem("lang");if(sv==="en"||sv==="es")lang=sv}catch(e){}
+function i(a){return a[lang==="es"?0:1]}
+function rnd(s){var x=Math.sin(s*127.1)*43758.5453;return x-Math.floor(x)}
+function wave(seed){var h="";for(var k=0;k<72;k++){var v=6+Math.round((.35+.65*Math.abs(Math.sin(k*.21+seed)))*rnd(k+seed*9)*28);h+='<i style="--h:'+v+'px;--d:'+(-k*.04).toFixed(2)+'s"></i>'}return '<div class="wf" aria-hidden="true">'+h+'</div>'}
+function plate(n){
+ var g="";
+ if(n===0){for(var k=0;k<9;k++)g+='<circle cx="'+(100+k*5)+'" cy="125" r="'+(14+k*9)+'" fill="none" stroke="currentColor" stroke-width="1" opacity="'+(.9-k*.08).toFixed(2)+'"/>';g='<g class="mv">'+g+'</g>'}
+ if(n===1){for(var k=0;k<34;k++)if(k<15||k>20)g+='<line x1="30" x2="170" y1="'+(30+k*5.4)+'" y2="'+(30+k*5.4)+'" stroke="currentColor" stroke-width="1"/>';g='<g class="mv">'+g+'<rect x="30" y="30" width="140" height="183" fill="none" stroke="currentColor"/></g>'}
+ if(n===2){for(var k=0;k<14;k++){var d="M20 "+(40+k*13);for(var x=20;x<=180;x+=10)d+=" L"+x+" "+(40+k*13+Math.sin(x*.07+k*.5)*(3+k*.9)).toFixed(1);g+='<path d="'+d+'" fill="none" stroke="currentColor" stroke-width="1"/>'}g='<g class="mv">'+g+'</g>'}
+ if(n===3){for(var r=0;r<14;r++)for(var c=0;c<11;c++){var s=Math.max(.4,2.8-Math.hypot(c-5,r-6.5)*.35);g+='<circle cx="'+(25+c*15)+'" cy="'+(30+r*14)+'" r="'+s.toFixed(2)+'" fill="currentColor"/>'}g='<g class="mv">'+g+'</g>'}
+ return '<svg viewBox="0 0 200 250" role="img" aria-label="'+i(ART[n])+'">'+g+'</svg>'
+}
+function row(left,title,desc,right,extra){return '<div class="row rv"><span class="mono">'+left+'</span><div><h3>'+title+'</h3>'+(desc?'<p>'+desc+'</p>':'')+(extra||'')+'</div><div class="r">'+right+'</div></div>'}
+function render(){
+ root.lang=lang;root.setAttribute("data-lang",lang);
+ document.getElementById("lang").textContent=lang==="es"?"EN":"ES";
+ document.querySelectorAll("[data-t]").forEach(function(e){var v=D[lang][e.getAttribute("data-t")];if(e.hasAttribute("data-html"))e.innerHTML=v;else e.textContent=v});
+ var L=D[lang];
+ document.getElementById("litList").innerHTML=LIT.map(function(x){return row(x[2],i(x[0]),i(x[3]),'<span class="mono">'+i(x[1])+'</span><br><a class="go" href="'+(x[4]||"#")+'"'+(x[4]&&x[4].charAt(0)==="h"?' target="_blank" rel="noopener"':'')+'>'+L.read+'</a>')}).join("");
+ document.getElementById("musList").innerHTML=MUS.map(function(x,n){return row("0"+(n+1),i(x[0]),x[4]?i(x[4]):"",'<span class="mono">'+i(x[1])+'</span><br><a class="go" href="'+x[2]+'" target="_blank" rel="noopener">'+(x[3]?L[x[3]]:L.listen)+'</a>',wave(n*3.7+1))}).join("");
+ document.getElementById("aniList").innerHTML=ANI.map(function(x,n){return row("0"+(n+1),i(x[0]),i(x[1]),'<a class="go" href="'+x[2]+'"'+(x[2].charAt(0)==="h"?' target="_blank" rel="noopener"':'')+'>'+L.view+'</a>')}).join("");
+ observe();
+}
+var io=("IntersectionObserver" in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12}):null;
+function observe(){document.querySelectorAll(".rv:not(.in)").forEach(function(e){io?io.observe(e):e.classList.add("in")})}
+document.getElementById("lang").addEventListener("click",function(){lang=lang==="es"?"en":"es";try{localStorage.setItem("lang",lang)}catch(e){}render();if(window.__refresh)window.__refresh()});
+render();
+
+/* fotografía dibujada con líneas que fluyen */
+var PHOTO="assets/images/imagen17.jpg";
+var cvs=document.getElementById("flow"),ctx=cvs.getContext("2d"),W=0,H=0,P=[],t=0,pix=null,pw=0,base=null,BG="10,15,22",ready=false,
+ still=matchMedia("(prefers-reduced-motion:reduce)").matches,img=new Image();
+function sample(){
+ var o=document.createElement("canvas");o.width=Math.max(1,Math.round(W));o.height=Math.max(1,Math.round(H));
+ var c=o.getContext("2d"),s=Math.max(o.width/img.naturalWidth,o.height/img.naturalHeight),w=img.naturalWidth*s,h=img.naturalHeight*s;
+ c.drawImage(img,(o.width-w)/2,(o.height-h)/2,w,h);
+ pix=c.getImageData(0,0,o.width,o.height).data;pw=o.width;
+ var dm=document.createElement("canvas");dm.width=o.width;dm.height=o.height;var dc=dm.getContext("2d");
+ dc.fillStyle="rgb("+BG+")";dc.fillRect(0,0,o.width,o.height);dc.globalAlpha=.5;dc.drawImage(o,0,0);
+ base=dm;ctx.drawImage(dm,0,0,W,H);
+}
+function size(){
+ var d=Math.min(devicePixelRatio||1,2),r=cvs.getBoundingClientRect();W=r.width;H=r.height;
+ cvs.width=Math.round(W*d);cvs.height=Math.round(H*d);ctx.setTransform(d,0,0,d,0,0);
+ ctx.fillStyle="rgb("+BG+")";ctx.fillRect(0,0,W,H);
+ if(img.naturalWidth)sample();
+}
+function seed(){P=[];var n=Math.round(Math.min(2200,Math.max(800,W*H/140)));for(var k=0;k<n;k++)P.push({x:Math.random()*W,y:Math.random()*H,l:26+Math.random()*80})}
+function step(fade){
+ t+=.0016;
+ if(fade&&base){ctx.globalAlpha=.03;ctx.drawImage(base,0,0,W,H);ctx.globalAlpha=1}
+ ctx.lineCap="round";
+ for(var i=0;i<P.length;i++){
+  var p=P[i],a=(Math.sin(p.x*.011+t*3)+Math.cos(p.y*.013-t*2.2)+Math.sin((p.x+p.y)*.006+t))*1.35,
+   nx=p.x+Math.cos(a)*1.3,ny=p.y+Math.sin(a)*1.3,ix=(p.x|0),iy=(p.y|0);
+  if(ix>=0&&iy>=0&&ix<pw&&iy*pw+ix<pix.length/4){
+   var q=(iy*pw+ix)*4,r=pix[q],g=pix[q+1],b=pix[q+2],lum=(r+g+b)/765,k=1.28;
+   ctx.strokeStyle="rgba("+Math.min(255,r*k+8)+","+Math.min(255,g*k+8)+","+Math.min(255,b*k+10)+","+(.28+lum*.62).toFixed(2)+")";
+   ctx.lineWidth=.55+lum*1.25;
+   ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(nx,ny);ctx.stroke();
+  }
+  p.x=nx;p.y=ny;p.l--;
+  if(p.x<0||p.x>W||p.y<0||p.y>H||p.l<0){p.x=Math.random()*W;p.y=Math.random()*H;p.l=26+Math.random()*80}
+ }
+}
+function start(){
+ size();seed();ready=true;
+ for(var f=0;f<(still?420:150);f++)step(false);
+}
+img.onload=function(){start();if(!still)(function loop(){step(true);requestAnimationFrame(loop)})()};
+img.src=PHOTO;
+var rt;addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(function(){if(ready)start()},200)});
+
+/* fases de la luna según la sección visible */
+var lit=document.getElementById("lit"),secs=[].slice.call(document.querySelectorAll("section.s")),PH=[.05,.2,.42,.7,1,1],mq=0;
+function moon(){
+ mq=0;var y=scrollY+innerHeight*.45,tops=secs.map(function(e){return e.getBoundingClientRect().top+scrollY}),f=PH[0],i=-1;
+ for(var k=0;k<tops.length;k++)if(y>=tops[k])i=k;
+ if(i>=0){f=PH[i];if(i<tops.length-1){var u=(y-tops[i])/(tops[i+1]-tops[i]);f=PH[i]+(PH[i+1]-PH[i])*Math.max(0,Math.min(1,u))}}
+ var rx=48*Math.abs(Math.cos(Math.PI*f));
+ lit.setAttribute("d","M0 -48A48 48 0 0 1 0 48A"+rx.toFixed(2)+" 48 0 0 "+(f<.5?0:1)+" 0 -48Z");
+}
+function qm(){if(!mq)mq=requestAnimationFrame(moon)}
+addEventListener("scroll",qm,{passive:true});addEventListener("resize",qm);moon();
+})();
+
+/* movimiento ligado al scroll con GSAP (sobrio) */
+(function(){
+ if(!window.gsap||!window.ScrollTrigger||matchMedia("(prefers-reduced-motion:reduce)").matches)return;
+ gsap.registerPlugin(ScrollTrigger);
+ try{ScrollTrigger.config({ignoreMobileResize:true})}catch(e){}
+ document.documentElement.classList.add("gsap");
+ var $=function(q,r){return [].slice.call((r||document).querySelectorAll(q))};
+ var st=function(t,s,e){return {trigger:t,start:s,end:e,scrub:true}};
+ /* barra de progreso de lectura */
+ var bar=document.createElement("div");bar.className="prog";document.body.appendChild(bar);
+ gsap.to(bar,{scaleX:1,ease:"none",scrollTrigger:{start:0,end:"max",scrub:.3}});
+ /* portada: entrada suave y salida con paralaje */
+ var h1=$(".hero h1")[0];
+ if(h1){
+  gsap.from(h1,{y:34,opacity:0,duration:1.7,ease:"power3.out",delay:.15});
+  gsap.from($(".hero .lede,.hero .mono"),{y:16,opacity:0,duration:1.2,ease:"power2.out",stagger:.12,delay:.7});
+  gsap.to(h1.parentElement,{yPercent:-9,opacity:.2,ease:"none",scrollTrigger:st(".hero","top top","bottom 15%")});
+ }
+ if($("#flow")[0])gsap.fromTo("#flow",{scale:1.12,yPercent:-4},{scale:1.12,yPercent:5,ease:"none",scrollTrigger:st(".hero","top top","bottom top")});
+ if($(".moon")[0])gsap.to(".moon",{yPercent:-16,ease:"none",scrollTrigger:{start:0,end:"max",scrub:true}});
+ /* títulos de sección: avanzan con el scroll */
+ $("section.s").forEach(function(sec){
+  var h=$(".sh h2",sec)[0],p=$(".sh p",sec)[0],n=$(".sh > .mono",sec)[0];
+  if(h)gsap.from(h,{y:44,opacity:0,ease:"none",scrollTrigger:st(sec,"top 90%","top 50%")});
+  if(n)gsap.from(n,{y:-16,opacity:0,ease:"none",scrollTrigger:st(sec,"top 90%","top 55%")});
+  if(p)gsap.from(p,{y:26,opacity:0,ease:"none",scrollTrigger:st(sec,"top 82%","top 42%")});
+ });
+ var ab=$(".about p")[0];if(ab)gsap.from(ab,{y:34,opacity:0,ease:"none",scrollTrigger:st(ab,"top 92%","top 62%")});
+ var big=$(".contact a.big")[0];if(big)gsap.from(big,{y:36,opacity:0,ease:"none",scrollTrigger:st(big,"top 96%","top 66%")});
+ /* filas: entran en cascada; las ondas de audio crecen */
+ gsap.set($(".row"),{opacity:0,y:26});
+ ScrollTrigger.batch($(".row"),{start:"top 92%",once:true,onEnter:function(b){
+  gsap.to(b,{opacity:1,y:0,duration:1,stagger:.12,ease:"power2.out",overwrite:true});
+  b.forEach(function(r){var w=$(".wf i",r);if(w.length)gsap.from(w,{scaleY:0,duration:1.1,stagger:.012,ease:"power2.out",delay:.25})});
+ }});
+ /* imágenes: paralaje interno dentro de su marco */
+ $(".il img,.colg img").forEach(function(img){
+  var w=document.createElement("div");w.className="pw";img.parentNode.insertBefore(w,img);w.appendChild(img);
+  gsap.fromTo(img,{yPercent:-7,scale:1.14},{yPercent:7,scale:1.14,ease:"none",scrollTrigger:st(w,"top bottom","bottom top")});
+ });
+ /* videos: el marco se abre como un obturador */
+ $(".frm,.vfrm").forEach(function(f){
+  gsap.fromTo(f,{clipPath:"inset(14% 7% 14% 7%)"},{clipPath:"inset(0% 0% 0% 0%)",ease:"none",scrollTrigger:st(f,"top 94%","top 48%")});
+ });
+ /* logo de Stroma: los colores fluyen según avanzas por la sección */
+ var fu=$(".fuse")[0];
+ if(fu){fu.style.animation="none";gsap.fromTo(fu,{backgroundPositionX:"0%"},{backgroundPositionX:"100%",ease:"none",scrollTrigger:st("#mus","top bottom","bottom top")})}
+ window.__refresh=function(){ScrollTrigger.refresh()};
+ addEventListener("load",function(){ScrollTrigger.refresh()});
+})();
+</script>
+</body>
+</html>
