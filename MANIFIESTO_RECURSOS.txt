@@ -1,0 +1,22 @@
+Archivo | Tipo | Tamaño bytes | SHA256 prefijo
+assets/images/imagen1.png | image/png | 44661 | 8a8cf783e850
+assets/images/imagen2.jpg | image/jpeg | 114365 | f26a69c97b8b
+assets/images/imagen3.jpg | image/jpeg | 377864 | 05f3bd8bf6fa
+assets/images/imagen4.jpg | image/jpeg | 99966 | eec721a4be93
+assets/images/imagen5.jpg | image/jpeg | 63141 | 0ef6886bdc19
+assets/images/imagen6.jpg | image/jpeg | 64134 | 39f1195a13a4
+assets/images/imagen7.jpg | image/jpeg | 50900 | 859d6e3db05c
+assets/images/imagen8.jpg | image/jpeg | 44355 | 2df787072ce8
+assets/images/imagen9.jpg | image/jpeg | 62009 | 578c6f0a9297
+assets/images/imagen10.jpg | image/jpeg | 29911 | 6e3c5eef9c26
+assets/videos/video1.mp4 | video/mp4 | 1636386 | c2d83543f33f
+assets/images/imagen11.jpg | image/jpeg | 55158 | 1f3cc1ff05da
+assets/images/imagen12.jpg | image/jpeg | 48198 | 7180a38d83ce
+assets/images/imagen13.jpg | image/jpeg | 63202 | e3db48b6407d
+assets/images/imagen14.jpg | image/jpeg | 42529 | 866ee916c9bd
+assets/images/imagen15.jpg | image/jpeg | 58847 | 7a0d637f5ec0
+assets/images/imagen16.jpg | image/jpeg | 65492 | 5c220fae98a2
+assets/videos/video2.mp4 | video/mp4 | 835587 | 3fdb00fff305
+assets/videos/video3.mp4 | video/mp4 | 2481115 | f910d1e13700
+assets/images/imagen17.jpg | image/jpeg | 68741 | 0ba0545ac908
+assets/images/imagen18.svg | image/svg+xml | 223 | b8efc7e04916

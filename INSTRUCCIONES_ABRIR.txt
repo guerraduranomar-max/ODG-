@@ -1,0 +1,10 @@
+PORTAFOLIO CREATIVO — VERSION PORTATIL
+
+1. Descarga el ZIP.
+2. Haz clic derecho > Extraer todo. NO abras index.html dentro del ZIP.
+3. Entra en la carpeta Portafolio_Creativo_Portable_v10.
+4. Abre index.html con Firefox o Chrome.
+
+No muevas index.html por separado: mueve o copia la carpeta Portafolio_Creativo_Portable_v10 completa.
+Las rutas son RELATIVAS: assets/images/... y assets/videos/...
+Las bibliotecas GSAP y las fuentes externas requieren internet.
