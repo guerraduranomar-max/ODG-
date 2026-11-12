@@ -371,11 +371,49 @@ img,svg,video{max-width:100%}
 @media(max-width:760px){.stroma-feature{grid-template-columns:1fr;gap:12px;padding:clamp(22px,5vw,35px)}.stroma-feature-art{max-width:580px;margin:auto}.stroma-feature-copy h3{font-size:clamp(2.8rem,9vw,4.2rem)}}
 @media(prefers-reduced-motion:reduce){.stroma-feature *{animation:none!important}}
 
+
+/* v15 · Fases lunares claras en PC / tablet / móvil */
+.sh > .mono{display:flex;flex-direction:column;align-items:flex-start;gap:9px;min-width:0}
+.sh > .mono b{margin-bottom:0}
+.phase-illustration{
+ display:block;width:clamp(64px,6vw,86px);height:clamp(64px,6vw,86px);
+ overflow:visible;filter:drop-shadow(0 0 14px rgba(227,184,102,.25));
+ flex:none;
+}
+.phase-name{display:block;max-width:145px;color:#e3b866;font-size:.69rem;line-height:1.35;letter-spacing:.07em}
+.moon{
+ width:clamp(195px,26vw,365px);height:auto;right:-3vw;top:clamp(116px,17vh,210px);
+ opacity:.66;filter:drop-shadow(0 0 40px rgba(227,184,102,.30));
+}
+.moon svg{overflow:visible}
+/* Legibilidad del contacto en pantallas estrechas. */
+.contact a.big{font-size:clamp(1.15rem,3.5vw,2.85rem);max-width:100%;overflow-wrap:anywhere;word-break:normal}
+@media(max-width:900px){
+ .moon{right:-56px;top:145px;width:clamp(180px,31vw,270px);opacity:.58}
+ .phase-illustration{width:72px;height:72px}
+}
+@media(max-width:760px){
+ .sh > .mono{display:grid;grid-template-columns:auto 65px 1fr;align-items:center;gap:10px 13px;margin-bottom:8px}
+ .sh > .mono b{font-size:1.6rem;min-width:28px}
+ .phase-illustration{width:65px;height:65px}
+ .phase-name{font-size:.66rem;max-width:none}
+ .moon{width:170px;right:-71px;top:180px;opacity:.43}
+ .contact a.big{font-size:clamp(1.05rem,4.6vw,1.65rem)}
+}
+@media(max-width:420px){
+ .sh > .mono{grid-template-columns:auto 56px 1fr;gap:8px 11px}
+ .phase-illustration{width:56px;height:56px}
+ .phase-name{font-size:.62rem}
+ .moon{width:145px;right:-76px;top:155px;opacity:.39}
+ .contact a.big{font-size:clamp(1.03rem,4.4vw,1.4rem)}
+}
+@media(prefers-reduced-motion:reduce){.moon,.phase-illustration{transition:none!important}}
+
 </style>
 </head>
 <body>
 <div class="stars" aria-hidden="true"></div>
-<div class="moon" aria-hidden="true"><svg viewBox="-52 -52 104 104"><circle r="48" fill="#121a28" stroke="#e9e6dc" stroke-opacity=".5" stroke-width=".6"/><path id="lit" fill="#efe6cf" d=""/></svg></div>
+<div class="moon" aria-hidden="true"><svg viewBox="-52 -52 104 104"><circle r="48" fill="#202d3e" stroke="#d8b879" stroke-opacity=".9" stroke-width="1.1"/><path id="moon-lit" fill="#f7e7bf" d=""/><circle r="48" fill="none" stroke="#fff1d2" stroke-opacity=".35" stroke-width=".7"/></svg></div>
 
 <header class="mast"><div class="wrap">
  <a class="brand" href="#top">Omar Durán Guerra</a>
@@ -405,7 +443,7 @@ img,svg,video{max-width:100%}
 </section>
 
  <section class="s rv" id="lit">
-  <div class="sh"><span class="mono"><b>I</b><span data-t="ph1"></span></span><h2 data-t="tLit"></h2><p data-t="pLit"></p></div>
+  <div class="sh"><span class="mono"><b>I</b><svg class="phase-illustration" viewBox="0 0 96 96" aria-hidden="true" focusable="false"><circle cx="48" cy="48" r="43" fill="none" stroke="#b99457" stroke-opacity=".42" stroke-width=".8" stroke-dasharray="2.5 5.5"/><circle cx="48" cy="48" r="37" fill="#202d3e" stroke="#b9a27c" stroke-opacity=".8" stroke-width="1.5"/><path transform="translate(48 48)" d="M 0.00,-37.00 L 10.57,-35.46 L 14.79,-33.92 L 17.91,-32.38 L 20.45,-30.83 L 22.61,-29.29 L 24.47,-27.75 L 26.12,-26.21 L 27.58,-24.67 L 28.88,-23.12 L 30.05,-21.58 L 31.10,-20.04 L 32.04,-18.50 L 32.88,-16.96 L 33.64,-15.42 L 34.30,-13.88 L 34.88,-12.33 L 35.39,-10.79 L 35.83,-9.25 L 36.19,-7.71 L 36.48,-6.17 L 36.71,-4.62 L 36.87,-3.08 L 36.97,-1.54 L 37.00,0.00 L 36.97,1.54 L 36.87,3.08 L 36.71,4.62 L 36.48,6.17 L 36.19,7.71 L 35.83,9.25 L 35.39,10.79 L 34.88,12.33 L 34.30,13.88 L 33.64,15.42 L 32.88,16.96 L 32.04,18.50 L 31.10,20.04 L 30.05,21.58 L 28.88,23.12 L 27.58,24.67 L 26.12,26.21 L 24.47,27.75 L 22.61,29.29 L 20.45,30.83 L 17.91,32.38 L 14.79,33.92 L 10.57,35.46 L 0.00,37.00 L 0.00,37.00 L 10.57,35.46 L 14.79,33.92 L 17.91,32.38 L 20.45,30.83 L 22.61,29.29 L 24.47,27.75 L 26.12,26.21 L 27.58,24.67 L 28.88,23.12 L 30.05,21.58 L 31.10,20.04 L 32.04,18.50 L 32.88,16.96 L 33.64,15.42 L 34.30,13.88 L 34.88,12.33 L 35.39,10.79 L 35.83,9.25 L 36.19,7.71 L 36.48,6.17 L 36.71,4.62 L 36.87,3.08 L 36.97,1.54 L 37.00,0.00 L 36.97,-1.54 L 36.87,-3.08 L 36.71,-4.62 L 36.48,-6.17 L 36.19,-7.71 L 35.83,-9.25 L 35.39,-10.79 L 34.88,-12.33 L 34.30,-13.88 L 33.64,-15.42 L 32.88,-16.96 L 32.04,-18.50 L 31.10,-20.04 L 30.05,-21.58 L 28.88,-23.12 L 27.58,-24.67 L 26.12,-26.21 L 24.47,-27.75 L 22.61,-29.29 L 20.45,-30.83 L 17.91,-32.38 L 14.79,-33.92 L 10.57,-35.46 L 0.00,-37.00 Z" fill="#f7e7bf"/><circle cx="48" cy="48" r="37" fill="none" stroke="#e5cf9d" stroke-opacity=".46" stroke-width="1"/></svg><span class="phase-name" data-t="ph1"></span></span><h2 data-t="tLit"></h2><p data-t="pLit"></p></div>
 
   <div class="book-section" id="libro-quince-cuentos">
     <div class="book-intro rv">
@@ -443,7 +481,7 @@ img,svg,video{max-width:100%}
  </section>
 
  <section class="s rv" id="mus">
-  <div class="sh"><span class="mono"><b>II</b><span data-t="ph2"></span></span><h2 data-t="tMus"></h2><p data-t="pMus"></p></div>
+  <div class="sh"><span class="mono"><b>II</b><svg class="phase-illustration" viewBox="0 0 96 96" aria-hidden="true" focusable="false"><circle cx="48" cy="48" r="43" fill="none" stroke="#b99457" stroke-opacity=".42" stroke-width=".8" stroke-dasharray="2.5 5.5"/><circle cx="48" cy="48" r="37" fill="#202d3e" stroke="#b9a27c" stroke-opacity=".8" stroke-width="1.5"/><path transform="translate(48 48)" d="M 0.00,-37.00 L 10.57,-35.46 L 14.79,-33.92 L 17.91,-32.38 L 20.45,-30.83 L 22.61,-29.29 L 24.47,-27.75 L 26.12,-26.21 L 27.58,-24.67 L 28.88,-23.12 L 30.05,-21.58 L 31.10,-20.04 L 32.04,-18.50 L 32.88,-16.96 L 33.64,-15.42 L 34.30,-13.88 L 34.88,-12.33 L 35.39,-10.79 L 35.83,-9.25 L 36.19,-7.71 L 36.48,-6.17 L 36.71,-4.62 L 36.87,-3.08 L 36.97,-1.54 L 37.00,0.00 L 36.97,1.54 L 36.87,3.08 L 36.71,4.62 L 36.48,6.17 L 36.19,7.71 L 35.83,9.25 L 35.39,10.79 L 34.88,12.33 L 34.30,13.88 L 33.64,15.42 L 32.88,16.96 L 32.04,18.50 L 31.10,20.04 L 30.05,21.58 L 28.88,23.12 L 27.58,24.67 L 26.12,26.21 L 24.47,27.75 L 22.61,29.29 L 20.45,30.83 L 17.91,32.38 L 14.79,33.92 L 10.57,35.46 L 0.00,37.00 L 0.00,37.00 L 6.21,35.46 L 8.69,33.92 L 10.53,32.38 L 12.02,30.83 L 13.29,29.29 L 14.38,27.75 L 15.35,26.21 L 16.21,24.67 L 16.98,23.12 L 17.66,21.58 L 18.28,20.04 L 18.83,18.50 L 19.33,16.96 L 19.77,15.42 L 20.16,13.88 L 20.50,12.33 L 20.80,10.79 L 21.06,9.25 L 21.27,7.71 L 21.44,6.17 L 21.58,4.62 L 21.67,3.08 L 21.73,1.54 L 21.75,0.00 L 21.73,-1.54 L 21.67,-3.08 L 21.58,-4.62 L 21.44,-6.17 L 21.27,-7.71 L 21.06,-9.25 L 20.80,-10.79 L 20.50,-12.33 L 20.16,-13.88 L 19.77,-15.42 L 19.33,-16.96 L 18.83,-18.50 L 18.28,-20.04 L 17.66,-21.58 L 16.98,-23.12 L 16.21,-24.67 L 15.35,-26.21 L 14.38,-27.75 L 13.29,-29.29 L 12.02,-30.83 L 10.53,-32.38 L 8.69,-33.92 L 6.21,-35.46 L 0.00,-37.00 Z" fill="#f7e7bf"/><circle cx="48" cy="48" r="37" fill="none" stroke="#e5cf9d" stroke-opacity=".46" stroke-width="1"/></svg><span class="phase-name" data-t="ph2"></span></span><h2 data-t="tMus"></h2><p data-t="pMus"></p></div>
   <div class="stroma-feature rv">
     <div class="stroma-feature-copy">
       <span class="mono" data-t="stromaEyebrow">PROYECTO MUSICAL</span>
@@ -462,26 +500,26 @@ img,svg,video{max-width:100%}
  </section>
 
  <section class="s rv" id="art">
-  <div class="sh"><span class="mono"><b>III</b><span data-t="ph3"></span></span><h2 data-t="tArt"></h2><p data-t="pArt"></p></div>
+  <div class="sh"><span class="mono"><b>III</b><svg class="phase-illustration" viewBox="0 0 96 96" aria-hidden="true" focusable="false"><circle cx="48" cy="48" r="43" fill="none" stroke="#b99457" stroke-opacity=".42" stroke-width=".8" stroke-dasharray="2.5 5.5"/><circle cx="48" cy="48" r="37" fill="#202d3e" stroke="#b9a27c" stroke-opacity=".8" stroke-width="1.5"/><path transform="translate(48 48)" d="M 0.00,-37.00 L 10.57,-35.46 L 14.79,-33.92 L 17.91,-32.38 L 20.45,-30.83 L 22.61,-29.29 L 24.47,-27.75 L 26.12,-26.21 L 27.58,-24.67 L 28.88,-23.12 L 30.05,-21.58 L 31.10,-20.04 L 32.04,-18.50 L 32.88,-16.96 L 33.64,-15.42 L 34.30,-13.88 L 34.88,-12.33 L 35.39,-10.79 L 35.83,-9.25 L 36.19,-7.71 L 36.48,-6.17 L 36.71,-4.62 L 36.87,-3.08 L 36.97,-1.54 L 37.00,0.00 L 36.97,1.54 L 36.87,3.08 L 36.71,4.62 L 36.48,6.17 L 36.19,7.71 L 35.83,9.25 L 35.39,10.79 L 34.88,12.33 L 34.30,13.88 L 33.64,15.42 L 32.88,16.96 L 32.04,18.50 L 31.10,20.04 L 30.05,21.58 L 28.88,23.12 L 27.58,24.67 L 26.12,26.21 L 24.47,27.75 L 22.61,29.29 L 20.45,30.83 L 17.91,32.38 L 14.79,33.92 L 10.57,35.46 L 0.00,37.00 L 0.00,37.00 L 0.00,35.46 L 0.00,33.92 L 0.00,32.38 L 0.00,30.83 L 0.00,29.29 L 0.00,27.75 L 0.00,26.21 L 0.00,24.67 L 0.00,23.12 L 0.00,21.58 L 0.00,20.04 L 0.00,18.50 L 0.00,16.96 L 0.00,15.42 L 0.00,13.88 L 0.00,12.33 L 0.00,10.79 L 0.00,9.25 L 0.00,7.71 L 0.00,6.17 L 0.00,4.62 L 0.00,3.08 L 0.00,1.54 L 0.00,0.00 L 0.00,-1.54 L 0.00,-3.08 L 0.00,-4.62 L 0.00,-6.17 L 0.00,-7.71 L 0.00,-9.25 L 0.00,-10.79 L 0.00,-12.33 L 0.00,-13.88 L 0.00,-15.42 L 0.00,-16.96 L 0.00,-18.50 L 0.00,-20.04 L 0.00,-21.58 L 0.00,-23.12 L 0.00,-24.67 L 0.00,-26.21 L 0.00,-27.75 L 0.00,-29.29 L 0.00,-30.83 L 0.00,-32.38 L 0.00,-33.92 L 0.00,-35.46 L 0.00,-37.00 Z" fill="#f7e7bf"/><circle cx="48" cy="48" r="37" fill="none" stroke="#e5cf9d" stroke-opacity=".46" stroke-width="1"/></svg><span class="phase-name" data-t="ph3"></span></span><h2 data-t="tArt"></h2><p data-t="pArt"></p></div>
   <div class="il rv"><div class="ilc"><figure><img src="assets/images/imagen11.jpg" alt="Un niño de ojos rojos con un cuchillo en la mano, ante una ventana roja"><figcaption class="mono">01 · Quince cuentos inusuales</figcaption></figure><figure><img src="assets/images/imagen12.jpg" alt="Un hombre en camiseta blanca, con la mano en el pecho, sobre un fondo amarillo"><figcaption class="mono">02 · Quince cuentos inusuales</figcaption></figure></div><div class="ilc"><figure><img class="tall" src="assets/images/imagen13.jpg" alt="Una niña de cabello blanco en medio de un desierto dorado"><figcaption class="mono">03 · Quince cuentos inusuales</figcaption></figure></div><div class="ilc"><figure><img src="assets/images/imagen14.jpg" alt="Una rata sobre una lavadora vieja"><figcaption class="mono">04 · Lavadora</figcaption></figure><figure><img src="assets/images/imagen15.jpg" alt="Una mujer de cabello oscuro entre unos brazos de traje negro, con el ceño fruncido"><figcaption class="mono">05 · Quince cuentos inusuales</figcaption></figure></div></div>
   <p class="mono credit"><span data-t="credit"></span> <a href="https://www.artstation.com/bolinolasco" target="_blank" rel="noopener">ArtStation ↗</a></p>
  </section>
 
  <section class="s rv" id="ani">
-  <div class="sh"><span class="mono"><b>IV</b><span data-t="ph4"></span></span><h2 data-t="tAni"></h2><p data-t="pAni"></p></div>
+  <div class="sh"><span class="mono"><b>IV</b><svg class="phase-illustration" viewBox="0 0 96 96" aria-hidden="true" focusable="false"><circle cx="48" cy="48" r="43" fill="none" stroke="#b99457" stroke-opacity=".42" stroke-width=".8" stroke-dasharray="2.5 5.5"/><circle cx="48" cy="48" r="37" fill="#202d3e" stroke="#b9a27c" stroke-opacity=".8" stroke-width="1.5"/><path transform="translate(48 48)" d="M 0.00,-37.00 L 10.57,-35.46 L 14.79,-33.92 L 17.91,-32.38 L 20.45,-30.83 L 22.61,-29.29 L 24.47,-27.75 L 26.12,-26.21 L 27.58,-24.67 L 28.88,-23.12 L 30.05,-21.58 L 31.10,-20.04 L 32.04,-18.50 L 32.88,-16.96 L 33.64,-15.42 L 34.30,-13.88 L 34.88,-12.33 L 35.39,-10.79 L 35.83,-9.25 L 36.19,-7.71 L 36.48,-6.17 L 36.71,-4.62 L 36.87,-3.08 L 36.97,-1.54 L 37.00,0.00 L 36.97,1.54 L 36.87,3.08 L 36.71,4.62 L 36.48,6.17 L 36.19,7.71 L 35.83,9.25 L 35.39,10.79 L 34.88,12.33 L 34.30,13.88 L 33.64,15.42 L 32.88,16.96 L 32.04,18.50 L 31.10,20.04 L 30.05,21.58 L 28.88,23.12 L 27.58,24.67 L 26.12,26.21 L 24.47,27.75 L 22.61,29.29 L 20.45,30.83 L 17.91,32.38 L 14.79,33.92 L 10.57,35.46 L 0.00,37.00 L -0.00,37.00 L -7.70,35.46 L -10.78,33.92 L -13.06,32.38 L -14.91,30.83 L -16.48,29.29 L -17.84,27.75 L -19.04,26.21 L -20.10,24.67 L -21.05,23.12 L -21.91,21.58 L -22.67,20.04 L -23.36,18.50 L -23.97,16.96 L -24.52,15.42 L -25.00,13.88 L -25.43,12.33 L -25.80,10.79 L -26.12,9.25 L -26.38,7.71 L -26.59,6.17 L -26.76,4.62 L -26.88,3.08 L -26.95,1.54 L -26.97,0.00 L -26.95,-1.54 L -26.88,-3.08 L -26.76,-4.62 L -26.59,-6.17 L -26.38,-7.71 L -26.12,-9.25 L -25.80,-10.79 L -25.43,-12.33 L -25.00,-13.88 L -24.52,-15.42 L -23.97,-16.96 L -23.36,-18.50 L -22.67,-20.04 L -21.91,-21.58 L -21.05,-23.12 L -20.10,-24.67 L -19.04,-26.21 L -17.84,-27.75 L -16.48,-29.29 L -14.91,-30.83 L -13.06,-32.38 L -10.78,-33.92 L -7.70,-35.46 L -0.00,-37.00 Z" fill="#f7e7bf"/><circle cx="48" cy="48" r="37" fill="none" stroke="#e5cf9d" stroke-opacity=".46" stroke-width="1"/></svg><span class="phase-name" data-t="ph4"></span></span><h2 data-t="tAni"></h2><p data-t="pAni"></p></div>
   <div class="vfeat rv" id="cicada"><figure><div class="vfrm"><video controls preload="metadata" playsinline poster="assets/images/imagen16.jpg" aria-label="Cícada, avance de ocho segundos"><source src="assets/videos/video2.mp4" type="video/mp4"></video></div><figcaption class="mono" data-t="cicCap"></figcaption></figure></div>
   <div class="vfeat rv" id="lavadora"><figure><div class="vfrm"><video controls preload="metadata" playsinline poster="assets/images/imagen4.jpg" aria-label="Lavadora, avance audiovisual de 13 segundos"><source src="assets/videos/video3.mp4" type="video/mp4">Tu navegador no admite video HTML5.</video></div><figcaption class="mono" data-t="lavCap"></figcaption><p class="lavadora-preview-note"><span data-t="lavPreviewNote"></span></p></figure></div>
   <div id="aniList"></div>
  </section>
 
  <section class="s rv" id="sob">
-  <div class="sh"><span class="mono"><b>V</b><span data-t="ph5"></span></span><h2 data-t="tSob"></h2></div>
+  <div class="sh"><span class="mono"><b>V</b><svg class="phase-illustration" viewBox="0 0 96 96" aria-hidden="true" focusable="false"><circle cx="48" cy="48" r="43" fill="none" stroke="#b99457" stroke-opacity=".42" stroke-width=".8" stroke-dasharray="2.5 5.5"/><circle cx="48" cy="48" r="37" fill="#202d3e" stroke="#b9a27c" stroke-opacity=".8" stroke-width="1.5"/><path transform="translate(48 48)" d="M 0.00,-37.00 L 10.57,-35.46 L 14.79,-33.92 L 17.91,-32.38 L 20.45,-30.83 L 22.61,-29.29 L 24.47,-27.75 L 26.12,-26.21 L 27.58,-24.67 L 28.88,-23.12 L 30.05,-21.58 L 31.10,-20.04 L 32.04,-18.50 L 32.88,-16.96 L 33.64,-15.42 L 34.30,-13.88 L 34.88,-12.33 L 35.39,-10.79 L 35.83,-9.25 L 36.19,-7.71 L 36.48,-6.17 L 36.71,-4.62 L 36.87,-3.08 L 36.97,-1.54 L 37.00,0.00 L 36.97,1.54 L 36.87,3.08 L 36.71,4.62 L 36.48,6.17 L 36.19,7.71 L 35.83,9.25 L 35.39,10.79 L 34.88,12.33 L 34.30,13.88 L 33.64,15.42 L 32.88,16.96 L 32.04,18.50 L 31.10,20.04 L 30.05,21.58 L 28.88,23.12 L 27.58,24.67 L 26.12,26.21 L 24.47,27.75 L 22.61,29.29 L 20.45,30.83 L 17.91,32.38 L 14.79,33.92 L 10.57,35.46 L 0.00,37.00 L -0.00,37.00 L -10.57,35.46 L -14.79,33.92 L -17.91,32.38 L -20.45,30.83 L -22.61,29.29 L -24.47,27.75 L -26.12,26.21 L -27.58,24.67 L -28.88,23.12 L -30.05,21.58 L -31.10,20.04 L -32.04,18.50 L -32.88,16.96 L -33.64,15.42 L -34.30,13.88 L -34.88,12.33 L -35.39,10.79 L -35.83,9.25 L -36.19,7.71 L -36.48,6.17 L -36.71,4.62 L -36.87,3.08 L -36.97,1.54 L -37.00,0.00 L -36.97,-1.54 L -36.87,-3.08 L -36.71,-4.62 L -36.48,-6.17 L -36.19,-7.71 L -35.83,-9.25 L -35.39,-10.79 L -34.88,-12.33 L -34.30,-13.88 L -33.64,-15.42 L -32.88,-16.96 L -32.04,-18.50 L -31.10,-20.04 L -30.05,-21.58 L -28.88,-23.12 L -27.58,-24.67 L -26.12,-26.21 L -24.47,-27.75 L -22.61,-29.29 L -20.45,-30.83 L -17.91,-32.38 L -14.79,-33.92 L -10.57,-35.46 L -0.00,-37.00 Z" fill="#f7e7bf"/><circle cx="48" cy="48" r="37" fill="none" stroke="#e5cf9d" stroke-opacity=".46" stroke-width="1"/></svg><span class="phase-name" data-t="ph5"></span></span><h2 data-t="tSob"></h2></div>
   <div class="about"><p data-t="aSob"></p></div>
  </section>
 
  <section class="s rv contact" id="con">
-  <div class="sh"><span class="mono"><b>VI</b><span data-t="ph6"></span></span><h2 data-t="tCon"></h2><p data-t="pCon"></p></div>
-  <a class="big" href="mailto:hola@tudominio.com">hola@tudominio.com</a>
+  <div class="sh"><span class="mono"><b>VI</b><svg class="phase-illustration" viewBox="0 0 96 96" aria-hidden="true" focusable="false"><circle cx="48" cy="48" r="43" fill="none" stroke="#b99457" stroke-opacity=".42" stroke-dasharray="2.5 5.5"/><path d="M12 65H84" stroke="#e4bf74" stroke-width="1.7"/><path d="M23 65A25 25 0 0 1 73 65Z" fill="#e3b866"/><path d="M48 19V30M20 39L28 47M76 39L68 47M11 55H22M85 55H74" stroke="#e3b866" stroke-width="2" stroke-linecap="round"/></svg><span class="phase-name" data-t="ph6"></span></span><h2 data-t="tCon"></h2><p data-t="pCon"></p></div>
+  <a class="big" href="mailto:guerra.duran.omar@gmail.com">guerra.duran.omar@gmail.com</a>
   <div class="links"><a class="youtube-contact" href="https://www.youtube.com/channel/UCvqPRjKaXM8nK6IsUoBd4Yw" target="_blank" rel="noopener noreferrer">YouTube · Canal oficial ↗</a><a href="https://open.spotify.com/album/7llUuZTKw5CL1C98NneUfc" target="_blank" rel="noopener">Spotify</a><a href="https://a.co/d/04S1v1Fh" target="_blank" rel="noopener">Amazon</a><a href="https://www.instagram.com/guerrachino/" target="_blank" rel="noopener">Instagram · @guerrachino</a><a href="https://www.facebook.com/share/1FkwT41bkB/" target="_blank" rel="noopener">Facebook · Omar Duran Guerra</a></div>
  </section>
 
@@ -555,7 +593,7 @@ render();
 
 /* fotografía dibujada con líneas que fluyen */
 var PHOTO="assets/images/imagen17.jpg";
-var cvs=document.getElementById("flow"),ctx=cvs.getContext("2d"),W=0,H=0,P=[],t=0,pix=null,pw=0,base=null,BG="10,15,22",ready=false,
+var cvs=document.getElementById("flow"),ctx=cvs?cvs.getContext("2d"):null,W=0,H=0,P=[],t=0,pix=null,pw=0,base=null,BG="10,15,22",ready=false,
  still=matchMedia("(prefers-reduced-motion:reduce)").matches,img=new Image();
 function sample(){
  var o=document.createElement("canvas");o.width=Math.max(1,Math.round(W));o.height=Math.max(1,Math.round(H));
@@ -594,21 +632,47 @@ function start(){
  size();seed();ready=true;
  for(var f=0;f<(still?420:150);f++)step(false);
 }
-img.onload=function(){start();if(!still)(function loop(){step(true);requestAnimationFrame(loop)})()};
+img.onload=function(){if(!cvs||!ctx)return;start();if(!still)(function loop(){step(true);requestAnimationFrame(loop)})()};
 img.src=PHOTO;
 var rt;addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(function(){if(ready)start()},200)});
 
-/* fases de la luna según la sección visible */
-var lit=document.getElementById("lit"),secs=[].slice.call(document.querySelectorAll("section.s")),PH=[.05,.2,.42,.7,1,1],mq=0;
-function moon(){
- mq=0;var y=scrollY+innerHeight*.45,tops=secs.map(function(e){return e.getBoundingClientRect().top+scrollY}),f=PH[0],i=-1;
- for(var k=0;k<tops.length;k++)if(y>=tops[k])i=k;
- if(i>=0){f=PH[i];if(i<tops.length-1){var u=(y-tops[i])/(tops[i+1]-tops[i]);f=PH[i]+(PH[i+1]-PH[i])*Math.max(0,Math.min(1,u))}}
- var rx=48*Math.abs(Math.cos(Math.PI*f));
- lit.setAttribute("d","M0 -48A48 48 0 0 1 0 48A"+rx.toFixed(2)+" 48 0 0 "+(f<.5?0:1)+" 0 -48Z");
+/* Fases lunares de las secciones, coherentes de luna nueva a luna llena.
+   La ilustración fija sigue el desplazamiento sin depender de GSAP. */
+var moonLight=document.getElementById("moon-lit");
+var sections=[].slice.call(document.querySelectorAll("section.s"));
+var PH=[0,0.15,0.25,0.38,0.5,0.5],moonQueued=0;
+function lunarShape(p){
+ var r=48,steps=56,c=Math.cos(2*Math.PI*Math.max(0,Math.min(.5,p))),path=[];
+ for(var j=0;j<=steps;j++){
+  var y=-r+2*r*j/steps,x=Math.sqrt(Math.max(0,r*r-y*y));
+  path.push([x,y]);
+ }
+ for(var j=steps;j>=0;j--){
+  var y=-r+2*r*j/steps,x=c*Math.sqrt(Math.max(0,r*r-y*y));
+  path.push([x,y]);
+ }
+ return 'M '+path.map(function(q){return q[0].toFixed(2)+','+q[1].toFixed(2)}).join(' L ')+' Z';
 }
-function qm(){if(!mq)mq=requestAnimationFrame(moon)}
-addEventListener("scroll",qm,{passive:true});addEventListener("resize",qm);moon();
+function updateMoon(){
+ moonQueued=0;
+ var marker=window.scrollY+window.innerHeight*.45;
+ var tops=sections.map(function(el){return el.getBoundingClientRect().top+window.scrollY});
+ var phase=PH[0],idx=-1;
+ for(var k=0;k<tops.length;k++)if(marker>=tops[k])idx=k;
+ if(idx>=0){
+  phase=PH[idx];
+  if(idx<tops.length-1){
+   var t=(marker-tops[idx])/(tops[idx+1]-tops[idx]);
+   t=Math.max(0,Math.min(1,t));
+   phase=PH[idx]+(PH[idx+1]-PH[idx])*t;
+  }
+ }
+ if(moonLight)moonLight.setAttribute('d',lunarShape(phase));
+}
+function queueMoon(){if(!moonQueued)moonQueued=requestAnimationFrame(updateMoon)}
+addEventListener('scroll',queueMoon,{passive:true});
+addEventListener('resize',queueMoon);
+updateMoon();
 })();
 
 /* movimiento ligado al scroll con GSAP (sobrio) */
