@@ -1,13 +1,7 @@
-PORTAFOLIO CREATIVO — ESTRUCTURA LIMPIA
+OmarDuranGuerra — Portafolio v14
 
-Abre index.html en tu navegador. Conserva toda la carpeta assets junto a index.html.
+Nueva sección Música: Stroma, texto breve, logo visible con efecto azul/naranja de fondo y dos enlaces (Spotify y YouTube). Eliminado el espacio en negro y la lista musical redundante de la sección. No se incluye reproductor Spotify.
 
-assets/images/imagenN.jpg / .png / .svg : imágenes, pósters y recursos del CSS
-assets/videos/videoN.mp4 : videos de las secciones del portafolio
+Se conservan portada, galería con movimiento, Literatura, Animación, Contacto, diseño responsivo y archivos con rutas relativas.
 
-Los enlaces son relativos a index.html. Para publicar sube index.html y la carpeta assets completos manteniendo las rutas.
-
-No edites las rutas de los archivos sin cambiar también las referencias en index.html.
-Para identificar cada recurso, consulta MANIFIESTO_RECURSOS.txt.
-
-Nota: se conservaron las dependencias externas de fuentes de Google y GSAP.
+Para uso local extrae el ZIP y abre index.html, manteniendo assets junto a él. Para GitHub Pages, sube los contenidos de la carpeta (index.html y assets) a la raíz del repositorio.
